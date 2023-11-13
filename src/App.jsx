@@ -5,6 +5,7 @@ import Solution from './pages/Solution';
 import Forum from './pages/Forum';
 import NotFound from './pages/NotFound';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/forum" element={<Forum />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

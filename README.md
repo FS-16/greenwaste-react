@@ -18,6 +18,7 @@ Selain itu, kami juga menyediakan beragam solusi bermanfaat, seperti tips prakti
 ### On Progress 👇
 - [⏳] **Responsive Mobile**: User bisa mengakses website secara responsive di device yang berbeda.
 - [⏳] **Page Forum**: User bisa melihat List-list pertanyaan.
+- [⏳] **Page Solution**: User bisa melihat Halaman Solution
 - [⏳] **Page Home**: User bisa melihat halaman Home.
 
 ## Tech Stack

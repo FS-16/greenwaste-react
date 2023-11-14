@@ -44,22 +44,22 @@ function Navbar() {
                 <a>Forum</a>
               </NavLink>
               <ul className="p-2 min-w-max">
-                <NavLink to="/forum">
+                <NavLink to="/forum/all-question">
                   <li>
                     <a>All Question</a>
                   </li>
                 </NavLink>
-                <NavLink to="/forum">
+                <NavLink to="/forum/ask-question">
                   <li>
                     <a>Ask Question</a>
                   </li>
                 </NavLink>
-                <NavLink to="/forum">
+                <NavLink to="/forum/my-question">
                   <li>
                     <a>My Question</a>
                   </li>
                 </NavLink>
-                <NavLink to="/forum">
+                <NavLink to="/forum/my-participation">
                   <li>
                     <a>My Participation</a>
                   </li>
@@ -95,22 +95,22 @@ function Navbar() {
             <details>
               <summary className="font-bold text-base">Forum</summary>
               <ul className="p-2 min-w-max ">
-                <NavLink to="/forum">
+                <NavLink to="/forum/all-question">
                   <li>
                     <a>All Question</a>
                   </li>
                 </NavLink>
-                <NavLink to="/forum">
+                <NavLink to="/forum/ask-question">
                   <li>
                     <a>Ask Question</a>
                   </li>
                 </NavLink>
-                <NavLink to="/forum">
+                <NavLink to="/forum/my-question">
                   <li>
                     <a>My Question</a>
                   </li>
                 </NavLink>
-                <NavLink to="/forum">
+                <NavLink to="/forum/my-participation">
                   <li>
                     <a>My Participation</a>
                   </li>

@@ -1,10 +1,10 @@
-import React from 'react';
-import { AiFillGithub, AiFillInstagram, AiFillFacebook } from 'react-icons/ai';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { AiFillGithub, AiFillInstagram, AiFillFacebook } from "react-icons/ai";
+import { NavLink } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <div className="md:fixed top-[-1] left-0 right-0 bottom-0 ">
+    <div className="mt-10">
       <footer className="footer p-10 bg-[#A5EA82] text-base-content">
         <aside>
           <img src="/img/logo.png" alt="logo greenwaste" />

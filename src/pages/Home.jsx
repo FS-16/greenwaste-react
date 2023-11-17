@@ -37,7 +37,7 @@ function Home() {
           <img className='rounded-2xl shadow-xl shadow-black/50' src='/img/home/tentang-kami.jpg' alt='foto' />
         </div>
       </section>
-      <section className='w-full h-screen pt-10 bg-gray-light'>
+      <section className='w-full py-10 bg-gray-light'>
         <h1 className='text-center text-4xl font-bold text-green-dark'>Kenapa Memilih GreenWaste?</h1>
         <div className="flex justify-center items-center">
         <div className='mt-14 grid grid-cols-3 gap-5 justify-items-center'>
@@ -126,6 +126,33 @@ function Home() {
           </div>
         </div>
         </div>
+      </section>
+      <section className='h-screen max-w-2xl mx-auto py-20'>
+        <h1 className='text-center text-4xl font-bold text-green-dark'>Contact Us</h1>
+        <form className='mt-8 flex flex-col gap-4 justify-center items-center'>
+          <div className="flex gap-x-6 w-full max-w-full">
+            <div className="form-group flex flex-col w-1/2">
+              <label htmlFor="firstname" className='font-bold text-lg'>First Name:</label>
+              <input type="text" id='firstname' className='px-3 py-2 border-gray-color border-2 rounded-md' placeholder='Enter your first name' />
+            </div>
+            <div className="form-group flex flex-col w-1/2">
+              <label htmlFor="lastname" className='font-bold text-lg'>Last Name:</label>
+              <input type="text" id='lastname' className='px-3 py-2 border-gray-color border-2 rounded-md' placeholder='Enter your last name' />            </div>
+          </div>
+          <div className="flex gap-x-6 w-full max-w-full">
+            <div className="form-group flex flex-col w-1/2">
+              <label htmlFor="email" className='font-bold text-lg'>Email:</label>
+              <input type="text" id='email' className='px-3 py-2 border-gray-color border-2 rounded-md' placeholder='Enter your email' />
+            </div>
+            <div className="form-group flex flex-col w-1/2">
+              <label htmlFor="phoneNumber" className='font-bold text-lg'>Phone Number:</label>
+              <input type="text" id='phoneNumber' className='px-3 py-2 border-gray-color border-2 rounded-md' placeholder='Enter your phone number' />            </div>
+          </div>
+          <div className="form-group w-full flex flex-col">
+              <label htmlFor="message" className='font-bold text-lg'>Message:</label>
+              <textarea name="" id="" cols="30" rows="10" placeholder='Enter your message' className='px-3 py-2 border-gray-color border-2 rounded-md'></textarea>
+            </div>
+        </form>
       </section>
     </>
   );

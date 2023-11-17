@@ -9,7 +9,12 @@ export default {
       colors: {
         'green-button': '#28a745',
         'green-dark': '#1a643d',
+        'green-light': "#52c41a",
+        'gray-light': '#f9f9f9'
       },
+      borderWidth: {
+        'default': '1px'
+      }
     },
   },
   plugins: [require('daisyui')],

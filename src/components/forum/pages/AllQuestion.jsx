@@ -1,53 +1,53 @@
-import React from "react";
-import Sidebar from "../Sidebar";
+import React from 'react';
+import Sidebar from '../Sidebar';
 
 function AllQuestion() {
   const data = [
     {
       id: 1,
       title:
-        "Bagaimana membuat limbah rumah tangga menjadi produk yang berkualitas ?",
+        'Bagaimana membuat limbah rumah tangga menjadi produk yang berkualitas ?',
       description:
-        "Apa langkah-langkah yang dapat diambil untuk mengubah limbah elektronik rumah tangga menjadi produk elektronik yang bisa digunakan kembali atau didaur ulang dengan efisien?",
+        'Apa langkah-langkah yang dapat diambil untuk mengubah limbah elektronik rumah tangga menjadi produk elektronik yang bisa digunakan kembali atau didaur ulang dengan efisien?',
       category: [
         {
-          category1: "Limbah organik",
-          category2: "Limbah anorganik",
-          category3: "Limbah B3",
+          category1: 'Limbah organik',
+          category2: 'Limbah anorganik',
+          category3: 'Limbah B3',
         },
       ],
-      username: "Brian",
-      answers: "12 answers",
+      username: 'Brian',
+      answers: '12 answers',
     },
     {
       id: 2,
-      title: "Peraturan dan kebijakan pemerintah terkait limbah",
+      title: 'Peraturan dan kebijakan pemerintah terkait limbah',
       description:
-        "Bagaimana peraturan dan kebijakan pemerintah dapat membantu dalam mengurangi dampak limbah anorganik dan mempromosikan pengelolaan yang lebih baik?",
+        'Bagaimana peraturan dan kebijakan pemerintah dapat membantu dalam mengurangi dampak limbah anorganik dan mempromosikan pengelolaan yang lebih baik?',
       category: [
         {
-          category1: "Limbah organik",
-          category2: "Limbah anorganik",
-          category3: "Limbah B3",
+          category1: 'Limbah organik',
+          category2: 'Limbah anorganik',
+          category3: 'Limbah B3',
         },
       ],
-      username: "Jerrrr",
-      answers: "5 answers",
+      username: 'Jerrrr',
+      answers: '5 answers',
     },
     {
       id: 3,
-      title: "Limbah B3 Meningkat",
+      title: 'Limbah B3 Meningkat',
       description:
-        "Bagaimana perusahaan atau organisasi dapat meningkatkan kesadaran dan pelatihan untuk mengelola limbah B3 dengan aman?",
+        'Bagaimana perusahaan atau organisasi dapat meningkatkan kesadaran dan pelatihan untuk mengelola limbah B3 dengan aman?',
       category: [
         {
-          category1: "Limbah organik",
-          category2: "Limbah anorganik",
-          category3: "Limbah B3",
+          category1: 'Limbah organik',
+          category2: 'Limbah anorganik',
+          category3: 'Limbah B3',
         },
       ],
-      username: "ASDSADSA",
-      answers: "10 answers",
+      username: 'ASDSADSA',
+      answers: '10 answers',
     },
   ];
 

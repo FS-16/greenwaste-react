@@ -151,7 +151,8 @@ function Home() {
           <div className="form-group w-full flex flex-col">
               <label htmlFor="message" className='font-bold text-lg'>Message:</label>
               <textarea name="" id="" cols="30" rows="10" placeholder='Enter your message' className='px-3 py-2 border-gray-color border-2 rounded-md'></textarea>
-            </div>
+          </div>
+          <button className='py-2 px-3 bg-green-light text-white rounded-md'>Submit</button>
         </form>
       </section>
     </>

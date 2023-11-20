@@ -7,26 +7,21 @@ import NotFound from './pages/NotFound';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
   return (
     <div>
+      <Navbar />
       <Routes>
-      <Route
-          path="/"
-          element={
-            <div>
-              <Navbar />
-              <Route index element={<Home />} />
-              <Route path="/solution" element={<Solution />} />
-              <Route path="/forum" element={<Forum />} />
-              <Footer />
-            </div>
-          }
-        />
+        <Route index element={<Home />} />
+        <Route path="/solution" element={<Solution />} />
+        <Route path="/forum" element={<Forum />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

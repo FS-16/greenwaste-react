@@ -1,24 +1,47 @@
-import { Route, Routes } from 'react-router-dom';
-
 import Home from './pages/Home';
 import Solution from './pages/Solution';
 import Forum from './pages/Forum';
-import NotFound from './pages/NotFound';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import MainLayout from './Layouts/MainLayout';
+import ErrorPage from './pages/ErrorPages';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      element: <MainLayout />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          path: '/',
+          element: <Home />,
+        },
+        {
+          path: '/solution',
+          element: <Solution />,
+        },
+        {
+          path: '/forum',
+          element: <Forum />,
+        },
+      ],
+    },
+    {
+      path: '/login',
+      element: <Login />,
+    },
+    {
+      path: '/register',
+      element: <Register />,
+    },
+  ]);
+
   return (
-    <div>
-      <Navbar />
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path="/solution" element={<Solution />} />
-        <Route path="/forum" element={<Forum />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <Footer />
-    </div>
+    <>
+      <RouterProvider router={router} />
+    </>
   );
 }
 

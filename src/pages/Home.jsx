@@ -13,12 +13,12 @@ function Home() {
         }}
       >
         <div className='text-center w-1/2'>
-          <h1 className='text-white text-5xl font-bold mb-5'>Ayo Jadilah Pahlawan Lingkungan Bersama Kami!</h1>
-          <p className='text-white text-lg font-semibold mx-20 mb-5'>
+          <h1 className='text-white text-4xl font-bold mb-5 max-w-xl mx-auto'>Ayo Jadilah Pahlawan Lingkungan Bersama Kami!</h1>
+          <p className='text-white text-base font-medium mx-20 mb-5'>
             Dengan setiap tindakan kecil, kita bisa menjadi pahlawan bagi lingkungan. Bergabunglah dengan kami di
             GreenWaste dan mulailah perjalanan Anda menuju keberlanjutan dan pelestarian lingkungan.
           </p>
-          <button className='px-8 py-4 text-white text-2xl bg-green-button rounded-md hover:bg-white hover:text-green-button'>
+          <button className='px-8 py-4 text-white text-xl bg-green-button rounded-md hover:bg-white hover:text-green-button'>
             Gabung Sekarang
           </button>
         </div>
@@ -29,7 +29,7 @@ function Home() {
           <p className='text-lg mt-2'>Misi kami untuk lingkungan yang lebih baik</p>
         </div>
         <div className='flex gap-x-10 mt-16 w-3/4 justify-center mx-auto'>
-          <p className='font-bold text-green-dark text-center my-auto px-14'>
+          <p className='font-semibold text-green-dark text-center my-auto px-14'>
             “Kami adalah pionir dalam menghadapi tantangan meningkatnya volume limbah rumah tangga dan pabrik. Di
             GreenWaste, kami mendedikasikan diri untuk menyediakan solusi yang inovatif dan edukatif bagi individu,
             rumah tangga, dan bisnis untuk menghadapi permasalahan lingkungan yang mendesak.”

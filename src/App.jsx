@@ -1,33 +1,62 @@
-import { Route, Routes } from 'react-router-dom';
-
 import Home from './pages/Home';
 import Solution from './pages/Solution';
-import Forum from './pages/Forum';
-import NotFound from './pages/NotFound';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import AllQuestion from './components/forum/pages/AllQuestion';
-import AskQuestion from './components/forum/pages/AskQuestion';
-import MyQuestion from './components/forum/pages/MyQuestion';
-import MyParticipation from './components/forum/pages/MyParticipation';
+import AllQuestion from './pages/forum/pages/AllQuestion';
+
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import MainLayout from './Layouts/MainLayout';
+import ErrorPage from './pages/ErrorPages';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import AskQuestion from './pages/forum/pages/AskQuestion';
+import MyParticipation from './pages/forum/pages/MyParticipation';
+import MyQuestion from './pages/forum/pages/MyQuestion';
 
 function App() {
-  return (
-    <div>
-      <Navbar />
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path="/solution" element={<Solution />} />
-        <Route path="/forum" element={<Forum />} />
-        <Route path="*" element={<NotFound />} />
+  const router = createBrowserRouter([
+    {
+      element: <MainLayout />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          path: '/',
+          element: <Home />,
+        },
+        {
+          path: '/solution',
+          element: <Solution />,
+        },
+        {
+          path: '/forum/all-question',
+          element: <AllQuestion />,
+        },
+        {
+          path: '/forum/ask-question',
+          element: <AskQuestion />,
+        },
+        {
+          path: '/forum/my-question',
+          element: <MyQuestion />,
+        },
+        {
+          path: '/forum/my-participation',
+          element: <MyParticipation />,
+        },
+      ],
+    },
+    {
+      path: '/login',
+      element: <Login />,
+    },
+    {
+      path: '/register',
+      element: <Register />,
+    },
+  ]);
 
-        <Route path="/forum/all-question" element={<AllQuestion />} />
-        <Route path="/forum/ask-question" element={<AskQuestion />} />
-        <Route path="/forum/my-question" element={<MyQuestion />} />
-        <Route path="/forum/my-participation" element={<MyParticipation />} />
-      </Routes>
-      <Footer />
-    </div>
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
   );
 }
 

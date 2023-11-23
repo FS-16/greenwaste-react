@@ -114,43 +114,49 @@ function AllQuestion() {
             </div>
           ))} */}
 
-          {question.map((item) => (
-            <div
-              className="flex flex-col ml-10 mt-10 border-b-2 pb-5"
-              key={item._id}
-            >
-              <div className="flex flex-row justify-between">
-                <div className="w-[490px]">
-                  <h1 className="text-xl font-bold">{item.title}</h1>
-                </div>
-                <div>5 Answers</div>
-              </div>
-              <div className="mt-2 mb-2 text-sm text-gray-500">
-                <p>{item.description}</p>
-              </div>
-              <div className="flex flex-row justify-between mt-2">
-                <div className="">
-                  {item.category.map((category, i) => (
-                    <span
-                      className="bg-green-500 text-white rounded-md p-1 text-sm mr-2"
-                      key={i}
-                    >
-                      {category.value}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex flex-row">
-                  <div className="w-[25px] h-[25px] mr-1">
-                    <img src="/img/avatar.png" alt="avatar icon" />
+          {question.length > 0 ? (
+            question.map((item) => (
+              <div
+                className="flex flex-col ml-10 mt-10 border-b-2 pb-5"
+                key={item._id}
+              >
+                <div className="flex flex-row justify-between">
+                  <div className="w-[490px]">
+                    <h1 className="text-xl font-bold">{item.title}</h1>
                   </div>
-                  <div className="text-green-500">{item.author}</div>
-                  <div className="text-gray-400 ml-2">
-                    {item.date.substring(0, 10)}
+                  <div>5 Answers</div>
+                </div>
+                <div className="mt-2 mb-2 text-sm text-gray-500">
+                  <p>{item.description}</p>
+                </div>
+                <div className="flex flex-row justify-between mt-2">
+                  <div className="">
+                    {item.category.map((category, i) => (
+                      <span
+                        className="bg-green-500 text-white rounded-md p-1 text-sm mr-2"
+                        key={i}
+                      >
+                        {category.value}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex flex-row">
+                    <div className="w-[25px] h-[25px] mr-1">
+                      <img src="/img/avatar.png" alt="avatar icon" />
+                    </div>
+                    <div className="text-green-500">{item.author}</div>
+                    <div className="text-gray-400 ml-2">
+                      {item.date.substring(0, 10)}
+                    </div>
                   </div>
                 </div>
               </div>
+            ))
+          ) : (
+            <div className="ml-10">
+              <h1>Loading.....</h1>
             </div>
-          ))}
+          )}
         </div>
       </div>
     </div>

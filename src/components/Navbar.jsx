@@ -67,8 +67,13 @@ function Navbar() {
               </ul>
             </li>
             <div className="mt-1 py-3">
-              <a className="mx-2 bg-gray-100 p-2 rounded-md">Register</a>
-              <a className="bg-green-500 p-2 rounded-md text-white">Login</a>
+              <NavLink to="/register">
+                <a className="mx-2 bg-gray-100 p-2 rounded-md">Register</a>
+              </NavLink>
+
+              <NavLink to="/login">
+                <a className="bg-green-500 p-2 rounded-md text-white">Login</a>
+              </NavLink>
             </div>
           </ul>
         </div>
@@ -123,12 +128,16 @@ function Navbar() {
 
       {/* BUTTON */}
       <div className="hidden lg:inline-flex lg:navbar-end gap-1">
-        <a className="mx-2  rounded-md p-2 text-base text-green-700 font-semibold border border-green-700 hover:bg-green-700 hover:text-white cursor-pointer">
-          Register
-        </a>
-        <a className=" bg-green-500 text-white rounded-md p-2 text-base font-semibold cursor-pointer hover:bg-green-700 hover:text-white">
-          Login
-        </a>
+        <NavLink to="/register">
+          <span className="mx-2  rounded-md p-2 text-base text-green-700 font-semibold border border-green-700 hover:bg-green-700 hover:text-white cursor-pointer">
+            Register
+          </span>
+        </NavLink>
+        <NavLink to="/login">
+          <span className=" bg-green-500 text-white rounded-md p-2 text-base font-semibold cursor-pointer hover:bg-green-700 hover:text-white">
+            Login
+          </span>
+        </NavLink>
       </div>
     </div>
   );

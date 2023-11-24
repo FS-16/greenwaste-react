@@ -7,6 +7,7 @@ import MainLayout from './Layouts/MainLayout';
 import ErrorPage from './pages/ErrorPages';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import VideoTutorial from './pages/VideoTutorial';
 
 function App() {
   const router = createBrowserRouter([
@@ -25,6 +26,10 @@ function App() {
         {
           path: '/forum',
           element: <Forum />,
+        },
+        {
+          path: '/video_tutorial',
+          element: <VideoTutorial />,
         },
       ],
     },

@@ -26,8 +26,10 @@ function Login() {
       <div className="h-screen md:flex md:gap-x-3.5">
           <img src="/img/login.jpg" className="md:w-1/2 object-cover hidden md:block" alt="login" />
           <div className="md:w-1/2 py-4 flex flex-col justify-center items-center relative">
+            <a href="/">
               <img src="/img/logo.png" className="absolute top-5 left-0" alt="logo" />
-              <div className="">
+            </a>
+            <div className="">
                 <h1 className="text-center text-green-light text-4xl font-medium">Login to your account</h1>
                 <form className="w-fit flex flex-col gap-4 p-5 mt-20" onSubmit={handleSubmit}>
                     <div className="form-group flex flex-col">
@@ -43,11 +45,11 @@ function Login() {
                 </form>
                 <div className="flex gap-1 justify-center">
                     <p className="my-auto">Don&apos;t have an account?</p>
-                    <a href="#" className="my-auto text-green-dark">Register</a>
+                    <a href="/register" className="my-auto text-green-dark">Register</a>
                 </div>
               </div>
-          </div>
-      </div>
+            </div>
+        </div>
     )
   }
   

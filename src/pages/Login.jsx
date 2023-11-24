@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
 import handleTitle from '../handle/handleTitle';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  loginStart,
+  loginSuccess,
+  loginFailure,
+} from '../redux/user/userSlice';
 
 function Login() {
   handleTitle('Register | GreenWaste');
 
   const [formData, setFormData] = useState({});
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const { loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setFormData({
@@ -20,7 +27,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      setLoading(true);
+      dispatch(loginStart());
       const res = await fetch(
         'https://bewildered-uniform-pig.cyclic.app/api/auth/login',
         {
@@ -33,16 +40,13 @@ function Login() {
       );
       const data = await res.json();
       if (data.success === false) {
-        setLoading(false);
-        setError(data.message);
+        dispatch(loginFailure(data.message));
         return;
       }
-      setLoading(false);
-      setError(null);
+      dispatch(loginSuccess(data));
       navigate('/');
     } catch (error) {
-      setLoading(false);
-      setError(error.message);
+      dispatch(loginFailure(error.message));
     }
   };
 

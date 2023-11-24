@@ -8,9 +8,10 @@ function VideoTutorial() {
           limbah yang efisien
         </p>
       </div>
-      <div className="grid grid-cols-2">
-        <div>
+      <div className="p-5 grid grid-cols-2">
+        <div className="hero-video my-5 mx-auto">
           <iframe
+            className="rounded-2xl"
             width="560"
             height="315"
             src="https://www.youtube.com/embed/wsfE9ab8lg4"
@@ -19,10 +20,15 @@ function VideoTutorial() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
           ></iframe>
+          <div>
+            <h3 className="text-2xl font-medium mb-2">How Recycling Works</h3>
+            <p>1 years ago</p>
+          </div>
         </div>
-        <div>
-          <div className="card-video">
+        <div className="list-video">
+          <div className="card-list-video p-2 flex gap-x-5">
             <iframe
+              className="rounded-2xl"
               width="250"
               height="180"
               src="https://www.youtube.com/embed/jsp7mgYv3aI"
@@ -31,9 +37,16 @@ function VideoTutorial() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
             ></iframe>
+            <div className="my-auto">
+              <h3 className="text-2xl font-medium">
+                Recycling 101: How to Properly Recycle at Home
+              </h3>
+              <p className="text-base">5 years ago</p>
+            </div>
           </div>
-          <div className="card-video">
+          <div className="card-list-video p-2 flex gap-x-5">
             <iframe
+              className="rounded-2xl"
               width="250"
               height="180"
               src="https://www.youtube.com/embed/x-h1GyFalEA"
@@ -42,9 +55,16 @@ function VideoTutorial() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
             ></iframe>
+            <div className="my-auto">
+              <h3 className="text-2xl font-medium">
+                Recycling 101: How to Properly Recycle at Home
+              </h3>
+              <p className="text-base">5 years ago</p>
+            </div>
           </div>
-          <div className="card-video">
+          <div className="card-list-video p-2 flex gap-x-5">
             <iframe
+              className="rounded-2xl"
               width="250"
               height="180"
               src="https://www.youtube.com/embed/20iOk-YYuB4"
@@ -53,6 +73,12 @@ function VideoTutorial() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
             ></iframe>
+            <div className="my-auto">
+              <h3 className="text-2xl font-medium">
+                Recycling 101: How to Properly Recycle at Home
+              </h3>
+              <p className="text-base">5 years ago</p>
+            </div>
           </div>
         </div>
       </div>

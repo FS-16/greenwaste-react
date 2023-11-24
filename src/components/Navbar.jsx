@@ -1,7 +1,9 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Link, NavLink } from 'react-router-dom';
 
 function Navbar() {
+  const { currentUser } = useSelector((state) => state.user);
   return (
     <div className="navbar bg-base-100 shadow-md mt-2">
       <div className="navbar-start">
@@ -67,13 +69,27 @@ function Navbar() {
               </ul>
             </li>
             <div className="mt-1 py-3">
-              <NavLink to="/register">
-                <a className="mx-2 bg-gray-100 p-2 rounded-md">Register</a>
-              </NavLink>
+              {currentUser ? (
+                <Link to="/profile">
+                  <img
+                    src="/img/avatar.png"
+                    alt="avatar icon"
+                    className="rounded-full w-7 h-7 object-cover"
+                  />
+                </Link>
+              ) : (
+                <div>
+                  <NavLink to="/register">
+                    <a className="mx-2 bg-gray-100 p-2 rounded-md">Register</a>
+                  </NavLink>
 
-              <NavLink to="/login">
-                <a className="bg-green-500 p-2 rounded-md text-white">Login</a>
-              </NavLink>
+                  <NavLink to="/login">
+                    <a className="bg-green-500 p-2 rounded-md text-white">
+                      Login
+                    </a>
+                  </NavLink>
+                </div>
+              )}
             </div>
           </ul>
         </div>
@@ -128,16 +144,28 @@ function Navbar() {
 
       {/* BUTTON */}
       <div className="hidden lg:inline-flex lg:navbar-end gap-1">
-        <NavLink to="/register">
-          <span className="mx-2  rounded-md p-2 text-base text-green-700 font-semibold border border-green-700 hover:bg-green-700 hover:text-white cursor-pointer">
-            Register
-          </span>
-        </NavLink>
-        <NavLink to="/login">
-          <span className=" bg-green-500 text-white rounded-md p-2 text-base font-semibold cursor-pointer hover:bg-green-700 hover:text-white">
-            Login
-          </span>
-        </NavLink>
+        {currentUser ? (
+          <Link to="/profile">
+            <img
+              src="/img/avatar.png"
+              alt="avatar icon"
+              className="rounded-full w-7 h-7 object-cover"
+            />
+          </Link>
+        ) : (
+          <div>
+            <NavLink to="/register">
+              <span className="mx-2  rounded-md p-2 text-base text-green-700 font-semibold border border-green-700 hover:bg-green-700 hover:text-white cursor-pointer">
+                Register
+              </span>
+            </NavLink>
+            <NavLink to="/login">
+              <span className=" bg-green-500 text-white rounded-md p-2 text-base font-semibold cursor-pointer hover:bg-green-700 hover:text-white">
+                Login
+              </span>
+            </NavLink>
+          </div>
+        )}
       </div>
     </div>
   );

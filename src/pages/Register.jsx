@@ -1,6 +1,9 @@
 import { useState } from "react"
+import handleTitle from '../handle/handleTitle';
 
 function Register() {
+    handleTitle('Register | GreenWaste');
+
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')

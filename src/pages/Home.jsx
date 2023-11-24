@@ -28,13 +28,6 @@ function Home() {
           <h1 className='text-4xl font-bold text-green-dark'>Tentang Kami</h1>
           <p className='text-lg mt-2'>Misi kami untuk lingkungan yang lebih baik</p>
         </div>
-        <div className='flex gap-x-10 mt-16 w-3/4 justify-center mx-auto'>
-          <p className='font-semibold text-green-dark text-center my-auto px-14'>
-            “Kami adalah pionir dalam menghadapi tantangan meningkatnya volume limbah rumah tangga dan pabrik. Di
-            GreenWaste, kami mendedikasikan diri untuk menyediakan solusi yang inovatif dan edukatif bagi individu,
-            rumah tangga, dan bisnis untuk menghadapi permasalahan lingkungan yang mendesak.”
-          </p>
-        </div>
         <div className="flex gap-x-10 mt-16 w-3/4 justify-center mx-auto">
           <p className="font-bold text-green-dark text-center my-auto px-14">
             “Kami adalah pionir dalam menghadapi tantangan meningkatnya volume

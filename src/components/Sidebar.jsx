@@ -1,4 +1,3 @@
-import React from "react";
 import { IoListCircle } from "react-icons/io5";
 import { RiQuestionFill, RiAccountCircleFill } from "react-icons/ri";
 import { SiQuantconnect } from "react-icons/si";
@@ -46,8 +45,8 @@ function Sidebar() {
       ),
     },
     {
-      name: "My Participation",
-      href: "/forum/my-participation",
+      name: "My Profile",
+      href: "/my-profile",
       icon: (
         <SiQuantconnect
           size={30}

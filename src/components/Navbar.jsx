@@ -1,6 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
+import { useSelector } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
 
 function Navbar() {
   const { currentUser } = useSelector((state) => state.user);
@@ -61,16 +60,16 @@ function Navbar() {
                     <a>My Question</a>
                   </li>
                 </NavLink>
-                <NavLink to="/forum/my-participation">
+                <NavLink to="/my-profile">
                   <li>
-                    <a>My Participation</a>
+                    <a>My Profile</a>
                   </li>
                 </NavLink>
               </ul>
             </li>
             <div className="mt-1 py-3">
               {currentUser ? (
-                <Link to="/profile">
+                <Link to="/my-profile">
                   <img
                     src="/img/avatar.png"
                     alt="avatar icon"
@@ -131,9 +130,9 @@ function Navbar() {
                     <a>My Question</a>
                   </li>
                 </NavLink>
-                <NavLink to="/forum/my-participation">
+                <NavLink to="/my-profile">
                   <li>
-                    <a>My Participation</a>
+                    <a>My Profile</a>
                   </li>
                 </NavLink>
               </ul>
@@ -145,7 +144,7 @@ function Navbar() {
       {/* BUTTON */}
       <div className="hidden lg:inline-flex lg:navbar-end gap-1">
         {currentUser ? (
-          <Link to="/profile">
+          <Link to="/my-profile">
             <img
               src="/img/avatar.png"
               alt="avatar icon"

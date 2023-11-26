@@ -6,7 +6,8 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://bewildered-uniform-pig.cyclic.app:5000',
+        target: 'https://greenwaste-server.vercel.app',
+        changeOrigin: true,
         secure: false,
       },
     },

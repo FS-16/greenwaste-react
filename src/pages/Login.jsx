@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import handleTitle from "../handle/handleTitle";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from 'react';
+import handleTitle from '../handle/handleTitle';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   loginStart,
   loginSuccess,
   loginFailure,
-} from "../redux/user/userSlice";
+} from '../redux/user/userSlice';
 
 function Login() {
-  handleTitle("Register | GreenWaste");
+  handleTitle('Register | GreenWaste');
 
   const [formData, setFormData] = useState({});
   const { loading, error } = useSelector((state) => state.user);
@@ -28,23 +28,22 @@ function Login() {
     e.preventDefault();
     try {
       dispatch(loginStart());
-      const res = await fetch(
-        "https://bewildered-uniform-pig.cyclic.app/api/auth/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
       const data = await res.json();
       if (data.success === false) {
         dispatch(loginFailure(data.message));
         return;
       }
       dispatch(loginSuccess(data));
-      navigate("/");
+
+      // if login succesful and navigate to home page
+      navigate('/');
     } catch (error) {
       dispatch(loginFailure(error.message));
     }
@@ -75,13 +74,13 @@ function Login() {
           disabled={loading}
           className="bg-green-500 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
         >
-          {loading ? "Loading..." : "Login"}
+          {loading ? 'Loading...' : 'Login'}
         </button>
       </form>
 
       <div className="flex fle-col gap-2 mt-5">
         <p>Dont Have Account ?</p>
-        <Link to={"/register"}>
+        <Link to={'/register'}>
           <span className="text-green-600">Register</span>
         </Link>
       </div>

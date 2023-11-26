@@ -1,9 +1,48 @@
-import Sidebar from "../../../components/Sidebar";
-import handleTitle from "../../../handle/handleTitle";
+import { useSelector } from 'react-redux';
+import Sidebar from '../../../components/Sidebar';
+import handleTitle from '../../../handle/handleTitle';
+import { useState } from 'react';
+import {
+  updateUserStart,
+  updateUserFailure,
+  updateUserSuccess,
+} from '../../../redux/user/userSlice';
+import { useDispatch } from 'react-redux';
 
 function MyProfile() {
-  handleTitle("My Profile | GreenWaste");
+  handleTitle('My Profile | GreenWaste');
+  const { currentUser, loading, error } = useSelector((state) => state.user);
+  const [formData, setFormData] = useState({});
+  const [updateSuccess, setUpdateSuccess] = useState(false);
+  const dispatch = useDispatch();
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      dispatch(updateUserStart());
+      const res = await fetch(`/api/users/${currentUser._id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(updateUserFailure(data.message));
+        return;
+      }
+
+      dispatch(updateUserSuccess(data));
+      setUpdateSuccess(true);
+    } catch (error) {
+      dispatch(updateUserFailure(error.message));
+    }
+  };
   return (
     <div className="flex flex-row justify-center ">
       <div className="flex-none">
@@ -25,42 +64,58 @@ function MyProfile() {
                 alt="avatar icon"
                 className="w-[50px] h-[50px]"
               />
-              <h1 className="text-base font-bold ml-2">asdajsdk</h1>
+              <h1 className="text-base font-bold ml-2">
+                {currentUser.username}
+              </h1>
             </div>
 
             <div className="mt-3">
-              <form className="flex flex-col gap-5">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                 <input
                   type="text"
                   placeholder="Username"
                   className="border p-3 rounded"
                   id="username"
+                  defaultValue={currentUser.username}
+                  onChange={handleChange}
                 />
                 <input
                   type="email"
                   placeholder="Email"
                   className="border p-3 rounded"
                   id="email"
+                  defaultValue={currentUser.email}
+                  onChange={handleChange}
                 />
                 <input
                   type="password"
                   placeholder="Password"
                   className="border p-3 rounded"
                   id="password"
+                  onChange={handleChange}
                 />
-                <button className="bg-green-500 text-white rounded-lg p-4 uppercase hover:opacity-95 disabled:opacity-80">
-                  Update User
+                <button
+                  disabled={loading}
+                  className="bg-green-500 text-white rounded-lg p-4 uppercase hover:opacity-95 disabled:opacity-80"
+                >
+                  {loading ? 'Loading...' : 'Update Profile'}
                 </button>
-
-                <div className="flex flex-row justify-between mt-1">
-                  <button className="bg-red-500 text-white rounded-lg p-2">
-                    Delete Account
-                  </button>
-                  <button className="bg-red-500 text-white rounded-lg p-2">
-                    Logout
-                  </button>
-                </div>
               </form>
+              <div className="flex flex-row justify-between mt-1">
+                <button className="bg-red-500 text-white rounded-lg p-2">
+                  Delete Account
+                </button>
+                <button className="bg-red-500 text-white rounded-lg p-2">
+                  Logout
+                </button>
+              </div>
+
+              <div>
+                <p className="text-red-700 mt-3">{error ? error : ''}</p>
+                <p className="text-green-700 mt-3">
+                  {updateSuccess ? 'Updated Profile Successfully!' : ''}
+                </p>
+              </div>
             </div>
           </div>
         </div>

@@ -6,6 +6,12 @@ import {
   updateUserStart,
   updateUserFailure,
   updateUserSuccess,
+  deleteUserFailure,
+  deleteUserStart,
+  deleteUserSuccess,
+  logoutUserStart,
+  logoutUserFailure,
+  logoutUserSuccess,
 } from '../../../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
 
@@ -41,6 +47,39 @@ function MyProfile() {
       setUpdateSuccess(true);
     } catch (error) {
       dispatch(updateUserFailure(error.message));
+    }
+  };
+
+  const handleDeleteUser = async () => {
+    try {
+      dispatch(deleteUserStart());
+
+      const res = await fetch(`/api/users/${currentUser._id}`, {
+        method: 'DELETE',
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(deleteUserFailure(data.message));
+        return;
+      }
+      dispatch(deleteUserSuccess(data));
+    } catch (error) {
+      dispatch(deleteUserFailure(error.message));
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      dispatch(logoutUserStart());
+      const res = await fetch('/api/auth/logout');
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(logoutUserFailure(data.message));
+        return;
+      }
+      dispatch(logoutUserSuccess(data));
+    } catch (error) {
+      dispatch(logoutUserFailure(data.message));
     }
   };
   return (
@@ -102,10 +141,16 @@ function MyProfile() {
                 </button>
               </form>
               <div className="flex flex-row justify-between mt-1">
-                <button className="bg-red-500 text-white rounded-lg p-2">
+                <button
+                  onClick={handleDeleteUser}
+                  className="bg-red-500 text-white rounded-lg p-2"
+                >
                   Delete Account
                 </button>
-                <button className="bg-red-500 text-white rounded-lg p-2">
+                <button
+                  onClick={handleLogout}
+                  className="bg-red-500 text-white rounded-lg p-2"
+                >
                   Logout
                 </button>
               </div>

@@ -53,6 +53,7 @@ function AskQuestion() {
         },
         body: JSON.stringify({
           ...formData,
+          userRef: currentUser._id,
           author: currentUser.username,
         }),
       });

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from '../../../components/Sidebar';
+import { useSelector } from 'react-redux';
 
 function MyQuestion() {
-  const data = [
+  const datas = [
     {
       id: 1,
       title:
@@ -52,6 +53,25 @@ function MyQuestion() {
       answers: '12 answers',
     },
   ];
+  const { currentUser } = useSelector((state) => state.user);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`/api/users/question/${currentUser._id}`);
+        const result = await response.json();
+        setData(result);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="flex flex-row justify-center">
@@ -73,38 +93,44 @@ function MyQuestion() {
           </div>
 
           {/* LIST ALL QUESTION */}
-          {data.map((item) => (
-            <div
-              className="flex flex-col ml-10 mt-10 border-b-2 pb-5"
-              key={item.id}
-            >
-              <div className="flex flex-row justify-between">
-                <div className="w-[490px]">
-                  <h1 className="text-xl font-bold">{item.title}</h1>
-                </div>
-                <div>{item.answers}</div>
-              </div>
-              <div className="mt-2 mb-2 text-sm text-gray-500">
-                <p>{item.description}</p>
-              </div>
-              <div className="flex flex-row justify-between mt-2">
-                <div className="w-full">
-                  <span className="bg-green-500 text-white rounded-md p-1 text-sm mr-2">
-                    {item.category[0].category1}
-                  </span>
-                  <span className="bg-green-500 text-white rounded-md p-1 text-sm mr-2">
-                    {item.category[0].category2}
-                  </span>
-                </div>
-                <div className="flex flex-row">
-                  <div className="w-[25px] h-[25px] mr-1">
-                    <img src="/img/avatar.png" alt="avatar icon" />
+          {data.length > 0 ? (
+            data.map((item, i) => (
+              <div
+                className="flex flex-col ml-10 mt-10 border-b-2 pb-5"
+                key={item._id}
+              >
+                <div className="flex flex-row justify-between">
+                  <div className="w-[490px]">
+                    <h1 className="text-xl font-bold">{item.title}</h1>
                   </div>
-                  <div className="text-green-500">{item.username}</div>
+                  <div>5 Answers</div>
+                </div>
+                <div className="mt-2 mb-2 text-sm text-gray-500">
+                  <p>{item.description}</p>
+                </div>
+                <div className="flex flex-row justify-between mt-2">
+                  <div className="">
+                    <span className=" text-green-700 rounded-md p-1 text-sm mr-2">
+                      {item.category.join(`, `)}
+                    </span>
+                  </div>
+                  <div className="flex flex-row">
+                    <div className="w-[25px] h-[25px] mr-1">
+                      <img src="/img/avatar.png" alt="avatar icon" />
+                    </div>
+                    <div className="text-green-500">{currentUser.username}</div>
+                    <div className="text-gray-400 ml-2">
+                      {item.date.substring(0, 10)}
+                    </div>
+                  </div>
                 </div>
               </div>
+            ))
+          ) : (
+            <div className="ml-10">
+              <h1>Loading.....</h1>
             </div>
-          ))}
+          )}
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from '../../../components/Sidebar';
 import { getQuestions } from '../../../api/api';
+import { Link } from 'react-router-dom';
 
 function AllQuestion() {
   const data = [
@@ -53,6 +54,7 @@ function AllQuestion() {
   ];
 
   const [question, setQuestion] = useState([]);
+  console.log(question);
 
   useEffect(() => {
     getQuestions((dataQuestion) => {
@@ -74,9 +76,11 @@ function AllQuestion() {
               <h1>All Questions</h1>
             </div>
             <div>
-              <button className="bg-green-500 text-white p-2 text-sm rounded-md hover:bg-green-900">
-                Ask Question
-              </button>
+              <Link to={'/forum/ask-question'}>
+                <button className="bg-green-500 text-white p-2 text-sm rounded-md hover:bg-green-900">
+                  Ask Question
+                </button>
+              </Link>
             </div>
           </div>
 
@@ -115,7 +119,7 @@ function AllQuestion() {
           ))} */}
 
           {question.length > 0 ? (
-            question.map((item) => (
+            question.map((item, i) => (
               <div
                 className="flex flex-col ml-10 mt-10 border-b-2 pb-5"
                 key={item._id}
@@ -131,14 +135,9 @@ function AllQuestion() {
                 </div>
                 <div className="flex flex-row justify-between mt-2">
                   <div className="">
-                    {item.category.map((category, i) => (
-                      <span
-                        className="bg-green-500 text-white rounded-md p-1 text-sm mr-2"
-                        key={i}
-                      >
-                        {category.value}
-                      </span>
-                    ))}
+                    <span className=" text-green-700 rounded-md p-1 text-sm mr-2">
+                      {item.category.join(`, `)}
+                    </span>
                   </div>
                   <div className="flex flex-row">
                     <div className="w-[25px] h-[25px] mr-1">

@@ -82,9 +82,11 @@ function MyQuestion() {
                     </Link>
                   </div>
                   <div className="flex flex-row gap-1">
-                    <button className="bg-green-600 text-white p-1 text-sm rounded-md hover:bg-green-900">
-                      Edit
-                    </button>
+                    <Link to={`/edit-question/${item._id}`}>
+                      <button className="bg-green-600 text-white p-1 text-sm rounded-md hover:bg-green-900">
+                        Edit
+                      </button>
+                    </Link>
                     <button
                       onClick={() => handleQuestionDelete(item._id)}
                       className="bg-red-600 text-white p-1 text-sm rounded-md hover:bg-red-900"

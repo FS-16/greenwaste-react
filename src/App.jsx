@@ -12,6 +12,7 @@ import MyQuestion from './pages/forum/pages/MyQuestion';
 import PrivateRoute from './components/PrivateRoute';
 import MyProfile from './pages/forum/pages/MyProfile';
 import EditQuestion from './pages/forum/pages/EditQuestion';
+import DetailQuestions from './pages/forum/pages/DetailQuestions';
 
 function App() {
   const router = createBrowserRouter([
@@ -30,6 +31,10 @@ function App() {
         {
           path: '/forum/all-question',
           element: <AllQuestion />,
+        },
+        {
+          path: '/details-question/:questionId',
+          element: <DetailQuestions />,
         },
         {
           element: <PrivateRoute />,

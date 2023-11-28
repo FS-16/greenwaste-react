@@ -1,58 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from '../../../components/Sidebar';
 import { useSelector } from 'react-redux';
+import handleTitle from '../../../handle/handleTitle';
+import { Link } from 'react-router-dom';
 
 function MyQuestion() {
-  const datas = [
-    {
-      id: 1,
-      title:
-        'Bagaimana membuat limbah rumah tangga menjadi produk yang berkualitas ?',
-      description:
-        'Apa langkah-langkah yang dapat diambil untuk mengubah limbah elektronik rumah tangga menjadi produk elektronik yang bisa digunakan kembali atau didaur ulang dengan efisien?',
-      category: [
-        {
-          category1: 'Limbah organik',
-          category2: 'Limbah anorganik',
-          category3: 'Limbah B3',
-        },
-      ],
-      username: 'Brian',
-      answers: '12 answers',
-    },
-    {
-      id: 1,
-      title:
-        'Bagaimana membuat limbah rumah tangga menjadi produk yang berkualitas ?',
-      description:
-        'Apa langkah-langkah yang dapat diambil untuk mengubah limbah elektronik rumah tangga menjadi produk elektronik yang bisa digunakan kembali atau didaur ulang dengan efisien?',
-      category: [
-        {
-          category1: 'Limbah organik',
-          category2: 'Limbah anorganik',
-          category3: 'Limbah B3',
-        },
-      ],
-      username: 'Brian',
-      answers: '12 answers',
-    },
-    {
-      id: 1,
-      title:
-        'Bagaimana membuat limbah rumah tangga menjadi produk yang berkualitas ?',
-      description:
-        'Apa langkah-langkah yang dapat diambil untuk mengubah limbah elektronik rumah tangga menjadi produk elektronik yang bisa digunakan kembali atau didaur ulang dengan efisien?',
-      category: [
-        {
-          category1: 'Limbah organik',
-          category2: 'Limbah anorganik',
-          category3: 'Limbah B3',
-        },
-      ],
-      username: 'Brian',
-      answers: '12 answers',
-    },
-  ];
+  handleTitle('My Question | GreenWaste');
+
   const { currentUser } = useSelector((state) => state.user);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -73,6 +27,24 @@ function MyQuestion() {
     fetchData();
   }, []);
 
+  const handleQuestionDelete = async (questionId) => {
+    try {
+      const res = await fetch(`/api/questions/${questionId}`, {
+        method: 'DELETE',
+      });
+
+      const data = await res.json();
+      if (data.success === false) {
+        console.log(data.message);
+        return;
+      }
+
+      setData((prev) => prev.filter((item) => item._id !== questionId));
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <div className="flex flex-row justify-center">
       <div className="flex-none">
@@ -86,9 +58,11 @@ function MyQuestion() {
               <h1>My Questions</h1>
             </div>
             <div>
-              <button className="bg-green-500 text-white p-2 text-sm rounded-md hover:bg-green-900">
-                Ask Question
-              </button>
+              <Link to={'/forum/ask-question'}>
+                <button className="bg-green-500 text-white p-2 text-sm rounded-md hover:bg-green-900">
+                  Ask Question
+                </button>
+              </Link>
             </div>
           </div>
 
@@ -101,9 +75,23 @@ function MyQuestion() {
               >
                 <div className="flex flex-row justify-between">
                   <div className="w-[490px]">
-                    <h1 className="text-xl font-bold">{item.title}</h1>
+                    <Link to={`/details-question/${item._id}`}>
+                      <h1 className="text-xl font-bold text-green-900 hover:text-green-500">
+                        {item.title}
+                      </h1>
+                    </Link>
                   </div>
-                  <div>5 Answers</div>
+                  <div className="flex flex-row gap-1">
+                    <button className="bg-green-600 text-white p-1 text-sm rounded-md hover:bg-green-900">
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleQuestionDelete(item._id)}
+                      className="bg-red-600 text-white p-1 text-sm rounded-md hover:bg-red-900"
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
                 <div className="mt-2 mb-2 text-sm text-gray-500">
                   <p>{item.description}</p>

@@ -14,6 +14,7 @@ import {
   logoutUserSuccess,
 } from '../../../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
+import MobileMenu from '../../../components/MobileMenu';
 
 function MyProfile() {
   handleTitle('My Profile | GreenWaste');
@@ -84,19 +85,22 @@ function MyProfile() {
   };
   return (
     <div className="flex flex-row justify-center ">
-      <div className="flex-none">
+      <div className="hidden lg:inline">
         <Sidebar />
       </div>
+      <div className="fixed bottom-0 left-0 right-0 lg:hidden">
+        <MobileMenu />
+      </div>
 
-      <div className="flex-initial w-[650px] mt-10 mb-10">
+      <div className="max-w-xs sm:max-w-xl lg:max-w-2xl lg:flex-initial lg:w-[650px] mt-10">
         <div className="flex flex-col">
-          <div className="flex flex-row justify-between ml-10 border-b-2 pb-4">
+          <div className="flex flex-row justify-between lg:ml-10 border-b-2 pb-4">
             <div className="text-xl pt-2 font-bold">
               <h1>My Profile</h1>
             </div>
           </div>
 
-          <div className="ml-10 p-5 bg-[#cff3bd] rounded-md mt-5">
+          <div className="lg:ml-10 p-5 bg-[#cff3bd] rounded-md mt-5">
             <div className="flex flex-row items-center mt-1">
               <img
                 src="/img/avatar.png"
@@ -171,25 +175,25 @@ function MyProfile() {
 
         {/* SECTION MY PARTICIPATION */}
         <div className="flex flex-col mt-10">
-          <div className="flex flex-row justify-between ml-10 border-b-2 pb-4">
+          <div className="flex flex-row justify-between lg:ml-10 border-b-2 pb-4">
             <div className="text-xl pt-2 font-bold">
               <h1>All Category</h1>
             </div>
           </div>
 
-          <div className="ml-10 p-5 bg-[#cff3bd] rounded-md mt-5">
+          <div className="lg:ml-10 p-5 bg-[#cff3bd] rounded-md mt-5">
             {/* ALL CATEGORY */}
             <div className="">
-              <div className="flex flex-row gap-2">
-                <div className="bg-[#aaeb8a] p-5 rounded-md shadow-md text-center w-[200px]">
+              <div className="flex flex-row gap-2 flex-wrap sm:flex-nowrap">
+                <div className="bg-[#aaeb8a] p-5 rounded-md shadow-md text-center w-full sm:w-[200px]">
                   <h1 className="font-bold text-base">Limbah Anorganik</h1>
                   <span className="text-sm">5 Question</span>
                 </div>
-                <div className="bg-[#aaeb8a] p-5 rounded-md shadow-md text-center w-[200px]">
+                <div className="bg-[#aaeb8a] p-5 rounded-md shadow-md text-center w-full sm:w-[200px]">
                   <h1 className="font-bold text-base">Limbah Organik</h1>
                   <span className="text-sm">10 Question</span>
                 </div>
-                <div className="bg-[#aaeb8a] p-5 rounded-md shadow-md text-center w-[200px]">
+                <div className="bg-[#aaeb8a] p-5 rounded-md shadow-md text-center w-full sm:w-[200px]">
                   <h1 className="font-bold text-base">Limbah B3</h1>
                   <span className="text-sm">7 Question</span>
                 </div>

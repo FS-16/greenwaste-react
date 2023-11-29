@@ -5,7 +5,7 @@ import { Link, NavLink } from 'react-router-dom';
 export default function Footer() {
   return (
     <div className="mt-10">
-      <footer className="footer p-10 bg-[#A5EA82] text-base-content">
+      <footer className="footer p-10 bg-[#A5EA82] text-base-content pb-28 lg:pb-10">
         <aside>
           <img src="/img/logo.png" alt="logo greenwaste" />
           <p>
@@ -15,7 +15,7 @@ export default function Footer() {
           </p>
         </aside>
         <nav>
-          <header className="footer-title text-black">Connect With Us</header>
+          <h1 className="font-bold uppercase">Connect With Us</h1>
           <Link to="/">
             <p className="link link-hover">Home</p>
           </Link>
@@ -27,7 +27,7 @@ export default function Footer() {
           </Link>
         </nav>
         <nav>
-          <header className="footer-title text-black">Follow Us</header>
+          <h1 className="font-bold uppercase">Follow Us</h1>
           <span className="flex">
             <AiFillFacebook size={20} />
             <a className="mx-1 link link-hover">Facebook</a>

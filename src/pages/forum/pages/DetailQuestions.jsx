@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import handleTitle from '../../../handle/handleTitle';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import MobileMenu from '../../../components/MobileMenu';
 
 function DetailQuestions() {
   handleTitle('Details Question | GreenWaste');
@@ -103,7 +104,10 @@ function DetailQuestions() {
 
   return (
     <main>
-      <div className="max-w-2xl mx-auto mt-10">
+      <div className="fixed bottom-0 left-0 right-0 lg:hidden">
+        <MobileMenu />
+      </div>
+      <div className="max-w-xs sm:max-w-xl lg:max-w-2xl lg:flex-initial mx-auto mt-10 mb-20">
         {loading && <p>Loading....</p>} {error && <p>Error</p>}
         {question && !loading && !error && (
           <div className="flex flex-col">
@@ -202,17 +206,17 @@ function DetailQuestions() {
 
                       <button
                         type="submit"
-                        className="bg-green-500 text-white p-2 rounded-md hover:bg-green-700"
+                        className="bg-green-500 text-white p-2 rounded-md hover:bg-green-700 w-full sm:w-auto shadow-lg"
                       >
                         Submit Answer
                       </button>
                     </form>
                   </div>
                 ) : (
-                  <div>
+                  <div className="flex flex-col sm:flex-row">
                     <span>Login untuk menambahkan jawaban baru</span>
                     <Link to="/login">
-                      <button className="bg-green-500 text-white p-2 rounded-md ml-2 hover:bg-green-700">
+                      <button className="bg-green-500 text-white p-2 rounded-md sm:ml-2 hover:bg-green-700 w-full sm:w-auto shadow-lg">
                         Login
                       </button>
                     </Link>

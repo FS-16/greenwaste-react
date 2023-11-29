@@ -3,6 +3,7 @@ import Sidebar from '../../../components/Sidebar';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import handleTitle from '../../../handle/handleTitle';
+import MobileMenu from '../../../components/MobileMenu';
 
 function AskQuestion() {
   handleTitle('Ask Question | GreenWaste');
@@ -74,20 +75,23 @@ function AskQuestion() {
 
   return (
     <div className="flex flex-row justify-center">
-      <div className="flex-none">
+      <div className="hidden lg:inline">
         <Sidebar />
       </div>
+      <div className="fixed bottom-0 left-0 right-0 lg:hidden">
+        <MobileMenu />
+      </div>
 
-      <div className="flex-initial w-[650px] mt-10">
+      <div className="max-w-xs sm:max-w-xl lg:max-w-2xl lg:flex-initial lg:w-[650px] mt-10">
         <div className="flex flex-col">
-          <div className="flex flex-row justify-between ml-10 border-b-2 pb-4">
+          <div className="flex flex-row justify-between lg:ml-10 border-b-2 pb-4">
             <div className="text-xl pt-2 font-bold">
               <h1>Ask Question</h1>
             </div>
           </div>
 
           {/* SECTION ASK QUESTION */}
-          <form onSubmit={handleSubmit} className="ml-10">
+          <form onSubmit={handleSubmit} className="lg:ml-10">
             <div className="mt-5">
               <h1 className="text-black text-base font-semibold pb-1">Judul</h1>
               <input
@@ -97,7 +101,7 @@ function AskQuestion() {
                 placeholder="Contoh title, Bagaimana cara mengelola limbah?"
                 value={formData.title}
                 onChange={handleChange}
-                className="border p-3 rounded-lg w-full max-w-xl"
+                className="border p-3 rounded-lg w-full max-w-xl text-xs sm:text-base"
                 required
               />
             </div>
@@ -145,7 +149,7 @@ function AskQuestion() {
 
             <button
               type="submit"
-              className="bg-green-500 text-white p-3 rounded-lg uppercase hover:bg-green-700 disabled:opacity-80 mt-5"
+              className="bg-green-500 text-white p-3 rounded-lg uppercase hover:bg-green-700 disabled:opacity-80 mt-5 w-full sm:w-auto shadow-lg"
             >
               {loading ? 'Loading...' : 'Ask Question'}
             </button>

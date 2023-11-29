@@ -112,11 +112,13 @@ function Navbar() {
               ) : (
                 <div>
                   <NavLink to="/register">
-                    <p className="mx-2 bg-gray-100 p-2 rounded-md">Register</p>
+                    <p className="rounded-md p-2 text-green-700 font-semibold border border-green-700 hover:bg-green-700 hover:text-white cursor-pointer ">
+                      Register
+                    </p>
                   </NavLink>
 
                   <NavLink to="/login">
-                    <p className="bg-green-500 p-2 rounded-md text-white">
+                    <p className="bg-green-500 text-white rounded-md p-2 text-base font-semibold cursor-pointer hover:bg-green-700 hover:text-white mt-2 shadow-lg">
                       Login
                     </p>
                   </NavLink>
@@ -126,7 +128,9 @@ function Navbar() {
           </ul>
         </div>
         <div className="normal-case text-xl navbar-center">
-          <img src="/img/logo.png" alt="" />
+          <Link to="/">
+            <img src="/img/logo.png" alt="logo-greenwaste" />
+          </Link>
         </div>
       </div>
 
@@ -222,12 +226,12 @@ function Navbar() {
         ) : (
           <div>
             <NavLink to="/register">
-              <span className="mx-2  rounded-md p-2 text-base text-green-700 font-semibold border border-green-700 hover:bg-green-700 hover:text-white cursor-pointer">
+              <span className="mx-2 rounded-md p-2 text-base text-green-700 font-semibold border border-green-700 hover:bg-green-700 hover:text-white cursor-pointer">
                 Register
               </span>
             </NavLink>
             <NavLink to="/login">
-              <span className=" bg-green-500 text-white rounded-md p-2 text-base font-semibold cursor-pointer hover:bg-green-700 hover:text-white">
+              <span className="bg-green-500 text-white rounded-md p-2 text-base font-semibold cursor-pointer hover:bg-green-700 hover:text-white">
                 Login
               </span>
             </NavLink>

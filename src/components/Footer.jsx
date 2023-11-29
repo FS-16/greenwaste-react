@@ -1,6 +1,6 @@
-import React from "react";
-import { AiFillGithub, AiFillInstagram, AiFillFacebook } from "react-icons/ai";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import { AiFillGithub, AiFillInstagram, AiFillFacebook } from 'react-icons/ai';
+import { Link, NavLink } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -16,15 +16,15 @@ export default function Footer() {
         </aside>
         <nav>
           <header className="footer-title text-black">Connect With Us</header>
-          <NavLink to="/">
-            <a className="link link-hover">Home</a>
-          </NavLink>
-          <NavLink to="/solution">
-            <a className="link link-hover">Solution</a>
-          </NavLink>
-          <NavLink to="/forum">
-            <a className="link link-hover">Forum</a>
-          </NavLink>
+          <Link to="/">
+            <p className="link link-hover">Home</p>
+          </Link>
+          <Link to="/solution">
+            <p className="link link-hover">Solution</p>
+          </Link>
+          <Link to="/forum">
+            <p className="link link-hover">Forum</p>
+          </Link>
         </nav>
         <nav>
           <header className="footer-title text-black">Follow Us</header>

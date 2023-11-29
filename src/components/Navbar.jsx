@@ -1,8 +1,29 @@
-import { useSelector } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, NavLink } from 'react-router-dom';
+import {
+  logoutUserFailure,
+  logoutUserStart,
+  logoutUserSuccess,
+} from '../redux/user/userSlice';
 
 function Navbar() {
   const { currentUser } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  const handleLogout = async () => {
+    try {
+      dispatch(logoutUserStart());
+      const res = await fetch('/api/auth/logout');
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(logoutUserFailure(data.message));
+        return;
+      }
+      dispatch(logoutUserSuccess(data));
+    } catch (error) {
+      dispatch(logoutUserFailure(data.message));
+    }
+  };
   return (
     <div className="navbar bg-base-100 shadow-md mt-2">
       <div className="navbar-start">
@@ -31,61 +52,73 @@ function Navbar() {
           >
             <NavLink to="/">
               <li>
-                <a>Home</a>
+                <p>Home</p>
               </li>
             </NavLink>
 
             <NavLink to="/solution">
               <li>
-                <a>Solution</a>
+                <p>Solution</p>
               </li>
             </NavLink>
             <li>
-              <NavLink to="/forum">
-                <a>Forum</a>
+              <NavLink to="/forum/all-question">
+                <p>Forum</p>
               </NavLink>
               <ul className="p-2 min-w-max">
                 <NavLink to="/forum/all-question">
                   <li>
-                    <a>All Question</a>
+                    <p>All Question</p>
                   </li>
                 </NavLink>
                 <NavLink to="/forum/ask-question">
                   <li>
-                    <a>Ask Question</a>
+                    <p>Ask Question</p>
                   </li>
                 </NavLink>
                 <NavLink to="/forum/my-question">
                   <li>
-                    <a>My Question</a>
+                    <p>My Question</p>
                   </li>
                 </NavLink>
                 <NavLink to="/my-profile">
                   <li>
-                    <a>My Profile</a>
+                    <p>My Profile</p>
                   </li>
                 </NavLink>
               </ul>
             </li>
             <div className="mt-1 py-3">
               {currentUser ? (
-                <Link to="/my-profile">
-                  <img
-                    src="/img/avatar.png"
-                    alt="avatar icon"
-                    className="rounded-full w-7 h-7 object-cover"
-                  />
-                </Link>
+                <div className="flex flex-col">
+                  <div className="flex flex-row items-center">
+                    <img
+                      src="/img/avatar.png"
+                      alt="avatar icon"
+                      className="rounded-full w-11 object-cover"
+                    />
+
+                    <h1 className="font-semibold text-base">
+                      {currentUser.username}
+                    </h1>
+                  </div>
+                  <button
+                    onClick={handleLogout}
+                    className="bg-red-600 text-white rounded-md text-center p-2"
+                  >
+                    Logout
+                  </button>
+                </div>
               ) : (
                 <div>
                   <NavLink to="/register">
-                    <a className="mx-2 bg-gray-100 p-2 rounded-md">Register</a>
+                    <p className="mx-2 bg-gray-100 p-2 rounded-md">Register</p>
                   </NavLink>
 
                   <NavLink to="/login">
-                    <a className="bg-green-500 p-2 rounded-md text-white">
+                    <p className="bg-green-500 p-2 rounded-md text-white">
                       Login
-                    </a>
+                    </p>
                   </NavLink>
                 </div>
               )}
@@ -102,13 +135,13 @@ function Navbar() {
         <ul className="menu menu-horizontal px-1">
           <NavLink to="/">
             <li className="font-bold text-base">
-              <a>Home</a>
+              <p>Home</p>
             </li>
           </NavLink>
 
           <NavLink to="/solution">
             <li className="font-bold text-base">
-              <a>Solution</a>
+              <p>Solution</p>
             </li>
           </NavLink>
           <li tabIndex={0}>
@@ -117,22 +150,22 @@ function Navbar() {
               <ul className="p-2 min-w-max ">
                 <NavLink to="/forum/all-question">
                   <li>
-                    <a>All Question</a>
+                    <p>All Question</p>
                   </li>
                 </NavLink>
                 <NavLink to="/forum/ask-question">
                   <li>
-                    <a>Ask Question</a>
+                    <p>Ask Question</p>
                   </li>
                 </NavLink>
                 <NavLink to="/forum/my-question">
                   <li>
-                    <a>My Question</a>
+                    <p>My Question</p>
                   </li>
                 </NavLink>
                 <NavLink to="/my-profile">
                   <li>
-                    <a>My Profile</a>
+                    <p>My Profile</p>
                   </li>
                 </NavLink>
               </ul>
@@ -142,15 +175,50 @@ function Navbar() {
       </div>
 
       {/* BUTTON */}
-      <div className="hidden lg:inline-flex lg:navbar-end gap-1">
+
+      <div className="hidden lg:dropdown lg:dropdown-end lg:inline-flex lg:navbar-end">
         {currentUser ? (
-          <Link to="/my-profile">
-            <img
-              src="/img/avatar.png"
-              alt="avatar icon"
-              className="rounded-full w-7 h-7 object-cover"
-            />
-          </Link>
+          <div>
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-10 rounded-full">
+                <img alt="avatar icon" src="/img/avatar.png" />
+              </div>
+            </div>
+
+            <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+              <div className="p-1 flex flex-row items-center border-b-2 mb-2">
+                <img
+                  alt="avatar icon"
+                  src="/img/avatar.png"
+                  className="w-[70px] rounded-full"
+                />
+                <h1 className="font-semibold text-md">
+                  {currentUser.username}
+                </h1>
+              </div>
+              <li>
+                <Link to="/my-profile">
+                  <p className="justify-between">My Profile</p>
+                </Link>
+              </li>
+              <li>
+                <Link to="/forum/my-question">
+                  <p>My Question</p>
+                </Link>
+              </li>
+
+              <button
+                onClick={handleLogout}
+                className="bg-red-600 text-white rounded-md text-center p-1 mt-2 hover:bg-red-900"
+              >
+                Logout
+              </button>
+            </ul>
+          </div>
         ) : (
           <div>
             <NavLink to="/register">

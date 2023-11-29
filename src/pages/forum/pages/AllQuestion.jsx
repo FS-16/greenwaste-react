@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 import Sidebar from '../../../components/Sidebar';
 import { getQuestions } from '../../../api/api';
 import { Link } from 'react-router-dom';
+import handleTitle from '../../../handle/handleTitle';
 
 function AllQuestion() {
+  handleTitle('All Question | GreenWaste');
+
   const [question, setQuestion] = useState([]);
-  console.log(question);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     getQuestions((dataQuestion) => {
       setQuestion(dataQuestion);
-      // console.log(dataQuestion);
     });
   }, []);
 
@@ -50,7 +52,6 @@ function AllQuestion() {
                       </h1>
                     </Link>
                   </div>
-                  <div>5 Answers</div>
                 </div>
                 <div className="mt-2 mb-2 text-sm text-gray-500">
                   <p>{item.description}</p>

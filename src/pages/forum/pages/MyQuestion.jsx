@@ -74,22 +74,22 @@ function MyQuestion() {
                 key={item._id}
               >
                 <div className="flex flex-row justify-between">
-                  <div className="w-[490px]">
+                  <div className="">
                     <Link to={`/details-question/${item._id}`}>
                       <h1 className="text-xl font-bold text-green-900 hover:text-green-500">
                         {item.title}
                       </h1>
                     </Link>
                   </div>
-                  <div className="flex flex-row gap-1">
+                  <div className="flex flex-row gap-2">
                     <Link to={`/edit-question/${item._id}`}>
-                      <button className="bg-green-600 text-white p-1 text-sm rounded-md hover:bg-green-900">
+                      <button className="bg-green-600 text-white p-1 text-sm rounded-md hover:bg-green-900 w-[50px] h-[25px] text-center">
                         Edit
                       </button>
                     </Link>
                     <button
                       onClick={() => handleQuestionDelete(item._id)}
-                      className="bg-red-600 text-white p-1 text-sm rounded-md hover:bg-red-900"
+                      className="bg-red-600 text-white p-1 text-sm rounded-md hover:bg-red-900 w-[50px] h-[25px]  text-center"
                     >
                       Delete
                     </button>
@@ -101,6 +101,7 @@ function MyQuestion() {
                 <div className="flex flex-row justify-between mt-2">
                   <div className="">
                     <span className=" text-green-700 rounded-md p-1 text-sm mr-2">
+                      <b className="text-black font-normal">Category : </b>
                       {item.category.join(`, `)}
                     </span>
                   </div>

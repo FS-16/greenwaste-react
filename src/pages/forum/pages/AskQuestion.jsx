@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import Sidebar from '../../../components/Sidebar';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import handleTitle from '../../../handle/handleTitle';
 
 function AskQuestion() {
+  handleTitle('Ask Question | GreenWaste');
+
   const { currentUser } = useSelector((state) => state.user);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -15,8 +18,8 @@ function AskQuestion() {
   const navigate = useNavigate();
 
   const categoriesOptions = [
-    { label: 'limbah Anorganik', value: 'limbah Anorganik' },
-    { label: 'limbah Organik', value: 'limbah Organik' },
+    { label: 'Limbah Anorganik', value: 'Limbah Anorganik' },
+    { label: 'Limbah Organik', value: 'Limbah Organik' },
     { label: 'Limbah B3', value: 'Limbah B3' },
   ];
 
@@ -84,31 +87,23 @@ function AskQuestion() {
           </div>
 
           {/* SECTION ASK QUESTION */}
-          {/* <div className="ml-10">
-            <div className="pt-5">
-              <h1 className="text-black text-base font-medium pb-1">Judul</h1>
+          <form onSubmit={handleSubmit} className="ml-10">
+            <div className="mt-5">
+              <h1 className="text-black text-base font-semibold pb-1">Judul</h1>
               <input
                 type="text"
+                id="title"
+                name="title"
                 placeholder="Contoh title, Bagaimana cara mengelola limbah?"
-                className="input input-bordered w-full max-w-xl"
+                value={formData.title}
+                onChange={handleChange}
+                className="border p-3 rounded-lg w-full max-w-xl"
+                required
               />
             </div>
-            <div className="pt-5">
-              <h1 className="text-black text-base font-medium pb-1">
-                Kategori
-              </h1>
-              <select className="select select-bordered w-full max-w-xl">
-                <option disabled selected>
-                  Pilih Kategori
-                </option>
-                <option>Limbah Anorganik</option>
-                <option>Limbah Organik</option>
-                <option>Limbah B3</option>
-              </select>
-            </div>
 
-            <div className="pt-5">
-              <h1 className="text-black text-base font-medium">
+            <div className="mt-5">
+              <h1 className="text-black text-base font-semibold pb-1">
                 Pertanyaan apa yang mau di tanyakan?
               </h1>
               <h6 className="text-sm text-gray-400 pb-1">
@@ -116,38 +111,21 @@ function AskQuestion() {
                 20 karakter.
               </h6>
               <textarea
-                className="textarea textarea-bordered w-full max-w-xl"
-                placeholder="Tulis pertanyaan anda disini !"
-              ></textarea>
-            </div>
-          </div> */}
-
-          <form onSubmit={handleSubmit} className="ml-10">
-            <div>
-              <h1>Title:</h1>
-              <input
-                type="text"
-                id="title"
-                name="title"
-                value={formData.title}
-                onChange={handleChange}
-                className="border p-3 rounded-lg w-full max-w-xl"
-              />
-            </div>
-
-            <div>
-              <h1>Description:</h1>
-              <textarea
                 id="description"
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
                 className="border p-3 rounded-lg w-full max-w-xl"
+                placeholder="Tulis Pertanyaan anda disini"
+                required
               />
             </div>
 
-            <div>
-              <h1>Category :</h1>
+            <div className="mt-5">
+              <h1 className="text-black text-base font-semibold pb-1">
+                Kategori Pertanyaan
+              </h1>
+              <h6 className="text-sm text-gray-400 pb-1">Pilih Kategori</h6>
               {categoriesOptions.map((option) => (
                 <div key={option.value}>
                   <input
@@ -157,6 +135,8 @@ function AskQuestion() {
                     value={option.value}
                     checked={formData.category.includes(option.value)}
                     onChange={handleChange}
+                    className="mr-2"
+                    required
                   />
                   <label htmlFor={option.value}>{option.value}</label>
                 </div>
@@ -165,7 +145,7 @@ function AskQuestion() {
 
             <button
               type="submit"
-              className="bg-green-500 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80 mt-5"
+              className="bg-green-500 text-white p-3 rounded-lg uppercase hover:bg-green-700 disabled:opacity-80 mt-5"
             >
               {loading ? 'Loading...' : 'Ask Question'}
             </button>

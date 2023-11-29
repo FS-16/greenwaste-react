@@ -19,8 +19,8 @@ function EditQuestion() {
   const params = useParams();
 
   const categoriesOptions = [
-    { label: 'limbah Anorganik', value: 'limbah Anorganik' },
-    { label: 'limbah Organik', value: 'limbah Organik' },
+    { label: 'Limbah Anorganik', value: 'Limbah Anorganik' },
+    { label: 'Limbah Organik', value: 'Limbah Organik' },
     { label: 'Limbah B3', value: 'Limbah B3' },
   ];
 
@@ -103,8 +103,8 @@ function EditQuestion() {
 
           {/* SECTION ASK QUESTION */}
           <form onSubmit={handleSubmit} className="ml-10">
-            <div>
-              <h1>Title:</h1>
+            <div className="mt-5">
+              <h1 className="text-black text-base font-semibold pb-1">Judul</h1>
               <input
                 type="text"
                 id="title"
@@ -112,22 +112,28 @@ function EditQuestion() {
                 value={formData.title}
                 onChange={handleChange}
                 className="border p-3 rounded-lg w-full max-w-xl"
+                required
               />
             </div>
 
-            <div>
-              <h1>Description:</h1>
+            <div className="mt-5">
+              <h1 className="text-black text-base font-semibold pb-1">
+                Deskripsi Pertanyaan
+              </h1>
               <textarea
                 id="description"
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
                 className="border p-3 rounded-lg w-full max-w-xl"
+                required
               />
             </div>
 
-            <div>
-              <h1>Category :</h1>
+            <div className="mt-5">
+              <h1 className="text-black text-base font-semibold pb-1">
+                Kategori Pertanyaan
+              </h1>
               {categoriesOptions.map((option) => (
                 <div key={option.value}>
                   <input
@@ -137,6 +143,8 @@ function EditQuestion() {
                     value={option.value}
                     checked={formData.category.includes(option.value)}
                     onChange={handleChange}
+                    required
+                    className="mr-2"
                   />
                   <label htmlFor={option.value}>{option.value}</label>
                 </div>

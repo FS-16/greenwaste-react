@@ -150,51 +150,35 @@ function DetailQuestions() {
             </div>
 
             {/* ANSWER */}
-            <div className="mt-5">
+            <div className="mt-10">
               <h1 className="border-b-2 font-bold">Answers</h1>
               {/* LIST COMMENT OR ANSWERS */}
               <div className="flex flex-col">
                 {loading && <p>Loading....</p>} {error && <p>Error</p>}
-                {answer &&
-                  !loading &&
-                  !error &&
-                  answer.map((item, i) => (
-                    <div className="border-b-2" key={i}>
-                      <div className="flex flex-row mt-5">
-                        <img
-                          src="/img/avatar.png"
-                          alt="avatar icon"
-                          className="w-[40px] object-contain"
-                        />
-                        <div className="flex flex-col ml-2">
-                          <span className="">{item.userName}</span>
-                          <span className="text-sm text-gray-500">
-                            {item.date.substring(0, 10)}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="mb-5 mt-5">
-                        <p>{item.description}</p>
+                {answer.map((item, i) => (
+                  <div className="border-b-2" key={i}>
+                    <div className="flex flex-row mt-5">
+                      <img
+                        src="/img/avatar.png"
+                        alt="avatar icon"
+                        className="w-[40px] object-contain"
+                      />
+                      <div className="flex flex-col ml-2">
+                        <span className="">{item.userName}</span>
+                        <span className="text-sm text-gray-500">
+                          {item.date.substring(0, 10)}
+                        </span>
                       </div>
                     </div>
-                  ))}
+                    <div className="mb-5 mt-5">
+                      <p>{item.description}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
 
               <div className="mt-5">
                 {currentUser ? (
-                  // <div>
-                  //   <h1>Your Answers</h1>
-                  //   <textarea
-                  //     id="description"
-                  //     name="description"
-                  //     value=""
-                  //     onChange=""
-                  //     className="border p-3 rounded-lg w-full max-w-2xl"
-                  //   />
-                  //   <button className="bg-green-500 text-white p-2 rounded-md hover:bg-green-700">
-                  //     Post your answer
-                  //   </button>
-                  // </div>
                   <div>
                     <form onSubmit={handleCommentSubmit}>
                       <h1 className="font-bold">Add Your Answer</h1>
@@ -204,6 +188,7 @@ function DetailQuestions() {
                         value={commentData.commentDescription}
                         onChange={handleChange}
                         required
+                        placeholder="Tambahkan jawaban mu disini"
                         className="border p-3 rounded-lg w-full max-w-2xl"
                       />
 

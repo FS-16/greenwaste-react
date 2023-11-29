@@ -14,6 +14,7 @@ function DetailQuestions() {
   const [error, setError] = useState(false);
   const [answer, setAnswer] = useState(null);
 
+  console.log(answer);
   // COMMENT STATE
   const [commentData, setCommentData] = useState({
     commentDescription: '',
@@ -151,33 +152,40 @@ function DetailQuestions() {
 
             {/* ANSWER */}
             <div className="mt-10">
-              <h1 className="border-b-2 font-bold">Answers</h1>
+              <h1 className="border-b-2 font-bold">
+                Answers {answer && answer.length}
+              </h1>
               {/* LIST COMMENT OR ANSWERS */}
               <div className="flex flex-col">
-                {loading && <p>Loading....</p>} {error && <p>Error</p>}
-                {answer.map((item, i) => (
-                  <div className="border-b-2" key={i}>
-                    <div className="flex flex-row mt-5">
-                      <img
-                        src="/img/avatar.png"
-                        alt="avatar icon"
-                        className="w-[40px] object-contain"
-                      />
-                      <div className="flex flex-col ml-2">
-                        <span className="">{item.userName}</span>
-                        <span className="text-sm text-gray-500">
-                          {item.date.substring(0, 10)}
-                        </span>
+                {answer && answer.length > 0 ? (
+                  answer.map((item, i) => (
+                    <div className="border-b-2" key={i}>
+                      <div className="flex flex-row mt-5">
+                        <img
+                          src="/img/avatar.png"
+                          alt="avatar icon"
+                          className="w-[40px] object-contain"
+                        />
+                        <div className="flex flex-col ml-2">
+                          <span className="">{item.userName}</span>
+                          <span className="text-sm text-gray-500">
+                            {item.date.substring(0, 10)}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="mb-5 mt-5">
+                        <p>{item.description}</p>
                       </div>
                     </div>
-                    <div className="mb-5 mt-5">
-                      <p>{item.description}</p>
-                    </div>
+                  ))
+                ) : (
+                  <div className="mt-2">
+                    <h1>Tidak ada Jawaban Terbaru</h1>
                   </div>
-                ))}
+                )}
               </div>
 
-              <div className="mt-5">
+              <div className="mt-10">
                 {currentUser ? (
                   <div>
                     <form onSubmit={handleCommentSubmit}>

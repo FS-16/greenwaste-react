@@ -7,7 +7,7 @@ export default defineConfig({
     proxy: {
       '/api': {
         target: 'https://greenwaste-api.vercel.app',
-        // target: 'https://desert-sand-fox-cape.cyclic.app',
+        // target: 'https://greenwaste-server.vercel.app',
         // target: 'http://localhost:5000',
         changeOrigin: true,
         secure: false,

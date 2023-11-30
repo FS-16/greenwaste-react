@@ -138,8 +138,8 @@ function MyQuestion() {
               </div>
             ))
           ) : (
-            <div className="lg:ml-10">
-              <h1>Loading.....</h1>
+            <div className="lg:ml-10 mt-10">
+              <h1>Belum ada Pertanyaan yang ditanyakan !!!</h1>
             </div>
           )}
         </div>

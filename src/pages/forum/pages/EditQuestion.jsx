@@ -147,7 +147,6 @@ function EditQuestion() {
                     value={option.value}
                     checked={formData.category.includes(option.value)}
                     onChange={handleChange}
-                    required
                     className="mr-2"
                   />
                   <label htmlFor={option.value}>{option.value}</label>

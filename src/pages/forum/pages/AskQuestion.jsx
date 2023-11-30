@@ -140,7 +140,6 @@ function AskQuestion() {
                     checked={formData.category.includes(option.value)}
                     onChange={handleChange}
                     className="mr-2"
-                    required
                   />
                   <label htmlFor={option.value}>{option.value}</label>
                 </div>

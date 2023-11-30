@@ -161,7 +161,8 @@ function DetailQuestions() {
               </h1>
               {/* LIST COMMENT OR ANSWERS */}
               <div className="flex flex-col">
-                {answer && answer.length > 0 ? (
+                {loading && <p>Loading....</p>} {error && <p>Error</p>}
+                {answer && !loading && !error && answer.length > 0 ? (
                   answer.map((item, i) => (
                     <div className="border-b-2" key={i}>
                       <div className="flex flex-row mt-5">

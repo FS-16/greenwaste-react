@@ -1,6 +1,7 @@
 import Home from './pages/Home';
 import Solution from './pages/Solution';
 import AllQuestion from './pages/forum/pages/AllQuestion';
+import Forum from './pages/Forum';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainLayout from './Layouts/MainLayout';
@@ -13,6 +14,9 @@ import PrivateRoute from './components/PrivateRoute';
 import MyProfile from './pages/forum/pages/MyProfile';
 import EditQuestion from './pages/forum/pages/EditQuestion';
 import DetailQuestions from './pages/forum/pages/DetailQuestions';
+
+import VideoTutorial from './pages/VideoTutorial';
+
 
 function App() {
   const router = createBrowserRouter([
@@ -56,6 +60,10 @@ function App() {
               element: <EditQuestion />,
             },
           ],
+        },
+        {
+          path: '/video_tutorial',
+          element: <VideoTutorial />,
         },
       ],
     },

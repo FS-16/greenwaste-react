@@ -179,7 +179,6 @@ function Navbar() {
       </div>
 
       {/* BUTTON */}
-
       <div className="hidden lg:dropdown lg:dropdown-end lg:inline-flex lg:navbar-end">
         {currentUser ? (
           <div>
@@ -236,7 +235,7 @@ function Navbar() {
               </span>
             </NavLink>
           </div>
-        )}
+        )} 
       </div>
     </div>
   );

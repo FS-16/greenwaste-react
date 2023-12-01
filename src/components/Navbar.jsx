@@ -1,10 +1,10 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
 import {
   logoutUserFailure,
   logoutUserStart,
   logoutUserSuccess,
-} from '../redux/user/userSlice';
+} from "../redux/user/userSlice";
 
 function Navbar() {
   const { currentUser } = useSelector((state) => state.user);
@@ -13,7 +13,7 @@ function Navbar() {
   const handleLogout = async () => {
     try {
       dispatch(logoutUserStart());
-      const res = await fetch('/api/auth/logout');
+      const res = await fetch("/api/auth/logout");
       const data = await res.json();
       if (data.success === false) {
         dispatch(logoutUserFailure(data.message));
@@ -129,7 +129,11 @@ function Navbar() {
         </div>
         <div className="normal-case text-xl navbar-center">
           <Link to="/">
-            <img src="/img/logo.png" alt="logo-greenwaste" />
+            <img
+              src="/img/logo.png"
+              className="w-60 h-auto"
+              alt="logo-greenwaste"
+            />
           </Link>
         </div>
       </div>
@@ -235,7 +239,7 @@ function Navbar() {
               </span>
             </NavLink>
           </div>
-        )} 
+        )}
       </div>
     </div>
   );

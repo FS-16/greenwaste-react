@@ -1,19 +1,19 @@
-import { Link, useNavigate } from 'react-router-dom';
-import handleTitle from '../handle/handleTitle';
-import { useState } from 'react';
-import axios from 'axios';
+import { Link, useNavigate } from "react-router-dom";
+import handleTitle from "../handle/handleTitle";
+import { useState } from "react";
+import axios from "axios";
 
 function Home() {
-  handleTitle('Home | GreenWaste');
+  handleTitle("Home | GreenWaste");
 
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phoneNumber: '',
-    message: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    message: "",
   });
 
   const handleChange = (e) => {
@@ -36,21 +36,21 @@ function Home() {
 
     // Submit contact to the server
     axios
-      .post('/api/contacts/submit-contact', newContact)
+      .post("/api/contacts/submit-contact", newContact)
       .then((response) => {
-        console.log('Message submitted successfully:', response.data);
+        console.log("Message submitted successfully:", response.data);
         setFormData({
           ...formData,
-          firstName: '',
-          lastName: '',
-          email: '',
-          phoneNumber: '',
-          message: '',
+          firstName: "",
+          lastName: "",
+          email: "",
+          phoneNumber: "",
+          message: "",
         });
-        alert('Pesan Berhasil di dikirim!');
+        alert("Pesan Berhasil di dikirim!");
         // location.reload();
       })
-      .catch((error) => console.error('Gagal mengirim pesan :', error));
+      .catch((error) => console.error("Gagal mengirim pesan :", error));
   };
 
   return (
@@ -62,11 +62,11 @@ function Home() {
             "linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/img/home/hero-img.jpg')",
         }}
       >
-        <div className="text-center lg:w-1/2">
-          <h1 className="text-white text-4xl lg:text-5xl font-bold mb-5 max-w-xl mx-auto">
+        <div className="text-center md:px-24">
+          <h1 className="text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-5 max-w-xl mx-auto">
             Ayo Jadilah Pahlawan Lingkungan Bersama Kami!
           </h1>
-          <p className="text-white text-sm lg:text-lg font-medium mx-5 lg:mx-20 mb-5">
+          <p className="text-white text-sm md:text-base lg:text-lg font-medium mx-5 lg:mx-20 mb-5">
             Dengan setiap tindakan kecil, kita bisa menjadi pahlawan bagi
             lingkungan. Bergabunglah dengan kami di GreenWaste dan mulailah
             perjalanan Anda menuju keberlanjutan dan pelestarian lingkungan.
@@ -81,13 +81,15 @@ function Home() {
       {/* SECTION TENTANG KAMI */}
       <section className="py-10">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-green-dark">Tentang Kami</h1>
-          <p className="mx-10 lg:mx-0 text-lg mt-2">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-green-dark">
+            Tentang Kami
+          </h1>
+          <p className="mx-10 lg:mx-0 text-base lg:text-lg mt-2">
             Misi kami untuk lingkungan yang lebih baik
           </p>
         </div>
-        <div className="flex flex-col lg:flex-row gap-x-10 mt-10 lg:mt-16 w-3/4 justify-center mx-auto">
-          <p className="font-bold text-green-dark text-center my-auto lg:px-14">
+        <div className="flex flex-col lg:flex-row gap-x-10 mt-10 lg:mt-16 justify-center mx-10">
+          <p className="font-semibold text-green-dark text-center my-auto">
             “Kami adalah pionir dalam menghadapi tantangan meningkatnya volume
             limbah rumah tangga dan pabrik. Di GreenWaste, kami mendedikasikan
             diri untuk menyediakan solusi yang inovatif dan edukatif bagi
@@ -95,7 +97,7 @@ function Home() {
             lingkungan yang mendesak.”
           </p>
           <img
-            className="rounded-2xl shadow-xl shadow-black/50 mt-10 lg:mt-0"
+            className="rounded-2xl shadow-xl shadow-black/50 mt-10 lg:mt-0 lg:w-auto lg:h-1/4"
             src="/img/home/tentang-kami.jpg"
             alt="about-images"
           />

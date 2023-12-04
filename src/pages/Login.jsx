@@ -6,7 +6,7 @@ import {
   loginSuccess,
   loginFailure,
 } from '../redux/user/userSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
   handleTitle('Login | GreenWaste');
@@ -14,7 +14,6 @@ function Login() {
   const { loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { currentUser } = useSelector((state) => state.user);
 
   const handleChange = (e) => {
     setFormData({
@@ -23,7 +22,6 @@ function Login() {
     });
   };
 
-  // const handleSubmit = async (e) => {
   //   e.preventDefault();
   //   try {
   //     dispatch(loginStart());
@@ -148,6 +146,9 @@ function Login() {
             <a href="/register" className="my-auto text-green-dark">
               Register
             </a>
+          </div>
+          <div className="text-center text-sm text-green-600 hover:text-green-900">
+            <Link to="/info-page">Account For Testing Features</Link>
           </div>
         </div>
         {error && <p className="text-red-500 mt-5">{error}</p>}

@@ -23,6 +23,7 @@ import EditUser from './pages/admin/EditUser';
 import QuestionDashboard from './pages/admin/QuestionDashboard';
 import AddNewQuestion from './pages/admin/AddNewQuestion';
 import EditQuestionDashboard from './pages/admin/EditQuestionDashboard';
+import InfoPage from './pages/InfoPage';
 
 function App() {
   const router = createBrowserRouter([
@@ -45,6 +46,10 @@ function App() {
         {
           path: '/details-question/:questionId',
           element: <DetailQuestions />,
+        },
+        {
+          path: '/info-page',
+          element: <InfoPage />,
         },
         {
           element: <PrivateRoute />,

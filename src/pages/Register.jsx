@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import handleTitle from '../handle/handleTitle';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Register() {
   handleTitle('Register | GreenWaste');
@@ -119,6 +119,9 @@ function Register() {
             <a href="/login" className="my-auto text-green-dark">
               Login
             </a>
+          </div>
+          <div className="text-center text-sm text-green-600 hover:text-green-900">
+            <Link to="/info-page">Account For Testing Features</Link>
           </div>
         </div>
         {error && <p className="text-red-500 mt-5">{error}</p>}

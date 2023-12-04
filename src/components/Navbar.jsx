@@ -1,10 +1,10 @@
-import { useSelector, useDispatch } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, NavLink } from 'react-router-dom';
 import {
   logoutUserFailure,
   logoutUserStart,
   logoutUserSuccess,
-} from "../redux/user/userSlice";
+} from '../redux/user/userSlice';
 
 function Navbar() {
   const { currentUser } = useSelector((state) => state.user);
@@ -13,7 +13,7 @@ function Navbar() {
   const handleLogout = async () => {
     try {
       dispatch(logoutUserStart());
-      const res = await fetch("/api/auth/logout");
+      const res = await fetch('/api/auth/logout');
       const data = await res.json();
       if (data.success === false) {
         dispatch(logoutUserFailure(data.message));
@@ -102,9 +102,16 @@ function Navbar() {
                       {currentUser.username}
                     </h1>
                   </div>
+                  {currentUser.role === 'Admin' && (
+                    <li className="rounded-md p-2 text-green-700 font-semibold border border-green-700 hover:bg-green-700 hover:text-white cursor-pointer">
+                      <Link to="/dashboard">
+                        <p>Dashboard</p>
+                      </Link>
+                    </li>
+                  )}
                   <button
                     onClick={handleLogout}
-                    className="bg-red-600 text-white rounded-md text-center p-2"
+                    className="bg-red-600 text-white rounded-md text-center p-2 mt-2"
                   >
                     Logout
                   </button>
@@ -112,7 +119,7 @@ function Navbar() {
               ) : (
                 <div>
                   <NavLink to="/register">
-                    <p className="rounded-md p-2 text-green-700 font-semibold border border-green-700 hover:bg-green-700 hover:text-white cursor-pointer ">
+                    <p className="rounded-md p-2 text-green-700 font-semibold border border-green-700 hover:bg-green-700 hover:text-white cursor-pointer">
                       Register
                     </p>
                   </NavLink>
@@ -212,6 +219,13 @@ function Navbar() {
                   <p className="justify-between">My Profile</p>
                 </Link>
               </li>
+              {currentUser.role === 'Admin' && (
+                <li>
+                  <Link to="/dashboard">
+                    <p>Dashboard</p>
+                  </Link>
+                </li>
+              )}
               <li>
                 <Link to="/forum/my-question">
                   <p>My Question</p>

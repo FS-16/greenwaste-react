@@ -15,6 +15,14 @@ import EditQuestion from './pages/forum/pages/EditQuestion';
 import DetailQuestions from './pages/forum/pages/DetailQuestions';
 
 import VideoTutorial from './pages/VideoTutorial';
+import Dashboard from './pages/admin/dashboard';
+import IsAdmin from './components/IsAdmin';
+import UsersDashboard from './pages/admin/UsersDashboard';
+import AddNewUser from './pages/admin/AddNewUser';
+import EditUser from './pages/admin/EditUser';
+import QuestionDashboard from './pages/admin/QuestionDashboard';
+import AddNewQuestion from './pages/admin/AddNewQuestion';
+import EditQuestionDashboard from './pages/admin/EditQuestionDashboard';
 
 function App() {
   const router = createBrowserRouter([
@@ -62,6 +70,39 @@ function App() {
         {
           path: '/video_tutorial',
           element: <VideoTutorial />,
+        },
+      ],
+    },
+    {
+      element: <IsAdmin />,
+      children: [
+        {
+          path: '/dashboard',
+          element: <Dashboard />,
+        },
+        {
+          path: '/dashboard/users',
+          element: <UsersDashboard />,
+        },
+        {
+          path: '/dashboard/users/add-new-user',
+          element: <AddNewUser />,
+        },
+        {
+          path: '/dashboard/users/edit-user/:userId',
+          element: <EditUser />,
+        },
+        {
+          path: '/dashboard/questions',
+          element: <QuestionDashboard />,
+        },
+        {
+          path: '/dashboard/questions/add-new-question',
+          element: <AddNewQuestion />,
+        },
+        {
+          path: '/dashboard/questions/edit-question/:questionId',
+          element: <EditQuestionDashboard />,
         },
       ],
     },

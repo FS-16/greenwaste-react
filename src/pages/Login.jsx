@@ -14,6 +14,7 @@ function Login() {
   const { loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { currentUser } = useSelector((state) => state.user);
 
   const handleChange = (e) => {
     setFormData({
@@ -22,10 +23,37 @@ function Login() {
     });
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     dispatch(loginStart());
+  //     const res = await fetch('/api/auth/login', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(formData),
+  //     });
+  //     const data = await res.json();
+  //     if (data.success === false) {
+  //       dispatch(loginFailure(data.message));
+  //       return;
+  //     }
+  //     dispatch(loginSuccess(data));
+
+  //     // if login succesful and navigate to home page
+  //     navigate('/');
+  //   } catch (error) {
+  //     dispatch(loginFailure(error.message));
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       dispatch(loginStart());
+
       const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: {
@@ -33,17 +61,26 @@ function Login() {
         },
         body: JSON.stringify(formData),
       });
-      const data = await res.json();
-      if (data.success === false) {
-        dispatch(loginFailure(data.message));
+
+      if (!res.ok) {
+        // Handle non-successful response (HTTP status not in the range 200-299)
+        const errorData = await res.json();
+        dispatch(loginFailure(errorData.message || 'Login failed'));
         return;
       }
+
+      const data = await res.json();
       dispatch(loginSuccess(data));
 
-      // if login succesful and navigate to home page
-      navigate('/');
+      // Navigate based on user role
+      if (data.role === 'Admin') {
+        navigate('/dashboard');
+      } else {
+        navigate('/');
+      }
     } catch (error) {
-      dispatch(loginFailure(error.message));
+      // Handle network or unexpected errors
+      dispatch(loginFailure(error.message || 'Login failed'));
     }
   };
 

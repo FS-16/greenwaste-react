@@ -11,6 +11,13 @@ Selain itu, kami juga menyediakan beragam solusi bermanfaat, seperti tips prakti
 ## Live demo
 
 ## Features & Roadmap
+### Account For Testing Features
+- Admin :
+  - email : admin@gmail.com
+  - password : admin
+- User :
+  - email : user@gmail.com
+  - password : user
 
 ### Complete
 --

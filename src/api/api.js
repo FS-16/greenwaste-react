@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getQuestions = (callback) => {
   axios
-    .get('https://greenwaste-api.vercel.app/api/questions')
+    .get('https://api-greenwaste.vercel.app/api/questions')
     .then((res) => {
       callback(res.data);
     })

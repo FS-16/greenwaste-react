@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://greenwaste-api.vercel.app',
+        target: 'https://api-greenwaste.vercel.app/',
         // target: 'https://greenwaste-server.vercel.app',
         // target: 'http://localhost:5000',
         changeOrigin: true,

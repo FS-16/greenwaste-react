@@ -45,7 +45,7 @@
 
 
 import Home from './pages/Home';
-import PageSolution from './pages/Solution';
+import PageSolution from './pages/PageSolution';
 import PageSolutionDaurUlang from './pages/PageSolutionDaurUlang';
 import PageSolutionDaurUlangDetail from './pages/PageSolutionDaurUlangDetail';
 import PageSolutionPengomposan from './pages/PageSolutionPengomposan';

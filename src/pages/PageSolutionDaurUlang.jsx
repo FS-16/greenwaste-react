@@ -1,5 +1,5 @@
 import handleTitle from '../handle/handleTitle';
-import SolutionDaurUlang from '../components/SolutionDaurUlang';
+import SolutionDaurUlang from '../components/Solution/SolutionDaurUlang';
 
 
 function PageSolutionDaurUlang() {

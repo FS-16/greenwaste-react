@@ -1,5 +1,5 @@
 import handleTitle from '../handle/handleTitle';
-import BeritaTerkiniDetail from '../components/BeritaTerkiniDetail';
+import BeritaTerkiniDetail from '../components/Solution/BeritaTerkiniDetail';
 
 
 function PageBeritaTerkiniDetail() {

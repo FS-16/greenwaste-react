@@ -1,5 +1,5 @@
 import handleTitle from '../handle/handleTitle';
-import SolutionPengomposan from '../components/SolutionPengomposan';
+import SolutionPengomposan from '../components/Solution/SolutionPengomposan';
 
 
 function PageSolutionPengomposan() {

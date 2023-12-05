@@ -1,5 +1,5 @@
 import handleTitle from '../handle/handleTitle';
-import SolutionDaurDetail from '../components/SolutionDaurDetail';
+import SolutionDaurDetail from '../components/Solution/SolutionDaurDetail';
 
 
 function PageSolutionDaurDetail() {

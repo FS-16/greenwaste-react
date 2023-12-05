@@ -1,5 +1,5 @@
 import handleTitle from '../handle/handleTitle';
-import BeritaList from '../components/BeritaList';
+import BeritaList from '../components/Solution/BeritaList';
 
 function PageBerita() {
   handleTitle('Berita | GreenWaste');

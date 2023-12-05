@@ -1,5 +1,5 @@
 import handleTitle from '../handle/handleTitle';
-import SolutionProduk from '../components/SolutionProduk';
+import SolutionProduk from '../components/Solution/SolutionProduk';
 
 
 function PageSolutionProduk() {

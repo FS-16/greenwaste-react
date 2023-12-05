@@ -6,6 +6,15 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+.active {
+  @apply text-green-500;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 /* @layer base {
   :root {
     --background-color: #ffffff;

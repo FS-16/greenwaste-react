@@ -8,7 +8,7 @@ import PageSolutionProduk from './pages/PageSolutionProduk';
 import PageSolutionProdukDetail from './pages/PageSolutionProdukDetail';
 import PageBerita from './pages/PageBerita';
 import PageBeritaRekomendasiDetail from './pages/PageBeritaRekomendasiDetail';
-import PageBeritaTerkiniDetail from './Pages/PageBeritaTerkiniDetail';
+import PageBeritaTerkiniDetail from './pages/PageBeritaTerkiniDetail';
 import PageBeritaDetail from './pages/PageBeritaDetail';
 import AllQuestion from './pages/forum/pages/AllQuestion';
 
@@ -49,7 +49,7 @@ function App() {
           path: '/solution',
           element: <PageSolution />,
         },
-        { 
+        {
           path: '/solution/daurulang',
           element: <PageSolutionDaurUlang />,
         },
@@ -178,4 +178,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

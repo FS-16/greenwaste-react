@@ -13,7 +13,9 @@ function Navbar() {
   const handleLogout = async () => {
     try {
       dispatch(logoutUserStart());
-      const res = await fetch('/api/auth/logout');
+      const res = await fetch(
+        'https://api-greenwaste.vercel.app/api/auth/logout'
+      );
       const data = await res.json();
       if (data.success === false) {
         dispatch(logoutUserFailure(data.message));

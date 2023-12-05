@@ -79,7 +79,7 @@ function SolutionProduk() {
         </div>
         <div className={SolutionProdukCss.cardContainer}>
           {produkList.map((produk) => (
-            <SolutionProdukCard key={produk._id} produk={{ id: produk._id.toString(),...produk }} onClick={yourClickHandlerFunction} />
+            <SolutionProdukCard key={produk._id} produk={{ id: produk._id.toString(), key: produk._id.toString(), ...produk }} onClick={yourClickHandlerFunction} />
           ))}
         </div>
       </div>

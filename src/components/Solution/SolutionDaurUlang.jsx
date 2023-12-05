@@ -76,7 +76,7 @@ function SolutionDaurUlang() {
         </div>
         <div className={SolutionDaurUlangCss.cardContainer}>
           {daurUlangList.map((daurUlang) => (
-            <SolutionDaurCard key={daurUlang.id} daurUlang={{ id: daurUlang.id.toString(), ...daurUlang }} onClick={yourClickHandlerFunction} />
+            <SolutionDaurCard key={daurUlang.id} daurUlang={{ id: daurUlang._id.toString(), key: daurUlang._id.toString(), ...daurUlang }} onClick={yourClickHandlerFunction} />
           ))}
         </div>
       </div>

@@ -29,7 +29,7 @@ export default function SolutionDaurDetail() {
   return (
     <div className={SolutionDetailCss.container}>
       <div className={SolutionDetailCss.arrowBack}>
-        <Link to="/solution/daur">
+        <Link to="/solution/daurulang">
           <img src="https://i.ibb.co/DKVPT3z/arrow-507257.png" alt="arrow-507257" />
         </Link>
       </div>

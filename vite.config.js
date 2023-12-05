@@ -1,18 +1,19 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  server: {
-    proxy: {
-      '/api': {
-        target: 'https://api-greenwaste.vercel.app/',
-        // target: 'https://greenwaste-server.vercel.app',
-        // target: 'http://localhost:5000',
-        changeOrigin: true,
-        secure: false,
+export default ({ mode }) => {
+  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
+  const config = {
+    plugins: [react()],
+    server: {
+      proxy: {
+        '/api': {
+          target: process.env.VITE_BASE_URL,
+          changeOrigin: true,
+          secure: false,
+        },
       },
     },
-  },
-  plugins: [react()],
-});
+  };
+  return defineConfig(config);
+};

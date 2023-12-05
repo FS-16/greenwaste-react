@@ -52,13 +52,16 @@ function Login() {
     try {
       dispatch(loginStart());
 
-      const res = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const res = await fetch(
+        'https://api-greenwaste.vercel.app/api/auth/login',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (!res.ok) {
         // Handle non-successful response (HTTP status not in the range 200-299)

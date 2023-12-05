@@ -1,19 +1,19 @@
-import { Link, useNavigate } from "react-router-dom";
-import handleTitle from "../handle/handleTitle";
-import { useState } from "react";
-import axios from "axios";
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import handleTitle from '../handle/handleTitle';
+import { useState } from 'react';
+import axios from 'axios';
 
 function Home() {
-  handleTitle("Home | GreenWaste");
+  handleTitle('Home | GreenWaste');
 
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    message: "",
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    message: '',
   });
 
   const handleChange = (e) => {
@@ -36,21 +36,21 @@ function Home() {
 
     // Submit contact to the server
     axios
-      .post("/api/contacts/submit-contact", newContact)
+      .post('/api/contacts/submit-contact', newContact)
       .then((response) => {
-        console.log("Message submitted successfully:", response.data);
+        console.log('Message submitted successfully:', response.data);
         setFormData({
           ...formData,
-          firstName: "",
-          lastName: "",
-          email: "",
-          phoneNumber: "",
-          message: "",
+          firstName: '',
+          lastName: '',
+          email: '',
+          phoneNumber: '',
+          message: '',
         });
-        alert("Pesan Berhasil di dikirim!");
+        alert('Pesan Berhasil di dikirim!');
         // location.reload();
       })
-      .catch((error) => console.error("Gagal mengirim pesan :", error));
+      .catch((error) => console.error('Gagal mengirim pesan :', error));
   };
 
   return (
@@ -127,7 +127,10 @@ function Home() {
                 Kami menyediakan solusi komprehensif untuk pengelolaan limbah
                 yang efisien dan berkelanjutan.
               </p>
-              <Link className="py-2 px-4 w-fit mx-auto mt-8 bg-green-light hover:bg-green-700 text-white rounded-lg">
+              <Link
+                to="/solution"
+                className="py-2 px-4 w-fit mx-auto mt-8 bg-green-light hover:bg-green-700 text-white rounded-lg"
+              >
                 Read More
               </Link>
             </div>
@@ -147,7 +150,10 @@ function Home() {
                 pengelolaan limbah, teknologi hijau, dan isu-isu lingkungan
                 terbaru
               </p>
-              <Link className="py-2 px-4 w-fit mx-auto mt-8 bg-green-light hover:bg-green-700 text-white rounded-lg">
+              <Link
+                to="/berita"
+                className="py-2 px-4 w-fit mx-auto mt-8 bg-green-light hover:bg-green-700 text-white rounded-lg"
+              >
                 Read More
               </Link>
             </div>
@@ -166,7 +172,10 @@ function Home() {
                 Pelari langkah-langkah praktis dalam mengelola limbah Anda
                 melalui koleksi video tutorial kami.
               </p>
-              <Link className="py-2 px-4 w-fit mx-auto mt-8 bg-green-light hover:bg-green-700 text-white rounded-lg">
+              <Link
+                to="/video_tutorial"
+                className="py-2 px-4 w-fit mx-auto mt-8 bg-green-light hover:bg-green-700 text-white rounded-lg"
+              >
                 Read More
               </Link>
             </div>

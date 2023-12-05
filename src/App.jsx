@@ -1,5 +1,15 @@
 import Home from './pages/Home';
-import Solution from './pages/Solution';
+import PageSolution from './pages/PageSolution';
+import PageSolutionDaurUlang from './pages/PageSolutionDaurUlang';
+import PageSolutionDaurUlangDetail from './pages/PageSolutionDaurUlangDetail';
+import PageSolutionPengomposan from './pages/PageSolutionPengomposan';
+import PageSolutionPengomposanDetail from './pages/PageSolutionPengomposanDetail';
+import PageSolutionProduk from './pages/PageSolutionProduk';
+import PageSolutionProdukDetail from './pages/PageSolutionProdukDetail';
+import PageBerita from './pages/PageBerita';
+import PageBeritaRekomendasiDetail from './pages/PageBeritaRekomendasiDetail';
+import PageBeritaTerkiniDetail from './Pages/PageBeritaTerkiniDetail';
+import PageBeritaDetail from './pages/PageBeritaDetail';
 import AllQuestion from './pages/forum/pages/AllQuestion';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -37,7 +47,47 @@ function App() {
         },
         {
           path: '/solution',
-          element: <Solution />,
+          element: <PageSolution />,
+        },
+        { 
+          path: '/solution/daurulang',
+          element: <PageSolutionDaurUlang />,
+        },
+        {
+          path: '/solution/daurulang/detail/:id',
+          element: <PageSolutionDaurUlangDetail />,
+        },
+        {
+          path: '/solution/pengomposan',
+          element: <PageSolutionPengomposan />,
+        },
+        {
+          path: '/solution/pengomposan/detail/:id',
+          element: <PageSolutionPengomposanDetail />,
+        },
+        {
+          path: '/solution/produk',
+          element: <PageSolutionProduk />,
+        },
+        {
+          path: '/solution/produk/detail/:id',
+          element: <PageSolutionProdukDetail />,
+        },
+        {
+          path: '/berita',
+          element: <PageBerita />,
+        },
+        {
+          path: '/berita/beritaDetail',
+          element: <PageBeritaDetail />,
+        },
+        {
+          path: '/berita/beritarekomendasidetail/:id',
+          element: <PageBeritaRekomendasiDetail />,
+        },
+        {
+          path: '/berita/beritaterkinidetail/:id',
+          element: <PageBeritaTerkiniDetail />,
         },
         {
           path: '/forum/all-question',
@@ -128,4 +178,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

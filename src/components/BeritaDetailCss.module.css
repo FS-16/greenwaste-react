@@ -41,3 +41,21 @@
     font-size: 18px;
     padding: 10px;
 }
+
+.descriptionContent h2 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.descriptionContent h3 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.descriptionContent ul li {
+    list-style-type: number;
+    font-size: 16px;
+    margin-left: 20px;
+}
+
+

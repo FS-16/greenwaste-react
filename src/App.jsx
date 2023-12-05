@@ -1,32 +1,227 @@
-import { Route, Routes } from 'react-router-dom';
+// import { Route, Routes } from 'react-router-dom';
+// import Home from './pages/Home';
+// import PageSolution from './pages/PageSolution';
+// import PageSolutionDaurUlang from './pages/PageSolutionDaurUlang';
+// import PageSolutionDaurUlangDetail from './pages/PageSolutionDaurUlangDetail';
+// import PageSolutionPengomposan from './pages/PageSolutionPengomposan';
+// import PageSolutionPengomposanDetail from './pages/PageSolutionPengomposanDetail';
+// import PageSolutionProduk from './pages/PageSolutionProduk';
+// import PageSolutionProdukDetail from './pages/PageSolutionProdukDetail';
+// import PageBerita from './pages/PageBerita';
+// import PageBeritaRekomendasiDetail from './pages/PageBeritaRekomendasiDetail';
+// import PageBeritaTerkiniDetail from './Pages/PageBeritaTerkiniDetail';
+// import PageBeritaDetail from './pages/PageBeritaDetail';
+// import Forum from './pages/Forum';
+// import NotFound from './pages/NotFound';
+// import Navbar from './components/Navbar';
+// import Footer from './components/Footer';
+
+// function App() {
+//   return (
+//     <div>
+//       <Navbar />
+//       <Routes>
+//         <Route index element={<Home />} />
+//         <Route path="/solution" element={<PageSolution />} />
+//         <Route path="/solution/daurulang" element={<PageSolutionDaurUlang />} />
+//         <Route path="/solution/daurulang/detail/:id" element={<PageSolutionDaurUlangDetail />} />
+//         <Route path="/solution/pengomposan" element={<PageSolutionPengomposan />} />
+//         <Route path="/solution/pengomposan/detail/:id" element={<PageSolutionPengomposanDetail />} />
+//         <Route path="/solution/produk" element={<PageSolutionProduk />} />
+//         <Route path="/solution/produk/detail/:id" element={<PageSolutionProdukDetail />} />
+//         <Route path="/berita" element={<PageBerita />} />
+//         <Route path="/berita/beritaDetail" element={<PageBeritaDetail />} />
+//         <Route path="/berita/beritarekomendasidetail/:id" element={<PageBeritaRekomendasiDetail />} />
+//         <Route path="/berita/beritaterkinidetail/:id" element={<PageBeritaTerkiniDetail />} />
+//         <Route path="/forum" element={<Forum />} />
+//         <Route path="*" element={<NotFound />} />
+//       </Routes>
+//       <Footer />
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
 import Home from './pages/Home';
-import PageSolution from './pages/PageSolution';
+import PageSolution from './pages/Solution';
 import PageSolutionDaurUlang from './pages/PageSolutionDaurUlang';
+import PageSolutionDaurUlangDetail from './pages/PageSolutionDaurUlangDetail';
 import PageSolutionPengomposan from './pages/PageSolutionPengomposan';
 import PageSolutionPengomposanDetail from './pages/PageSolutionPengomposanDetail';
 import PageSolutionProduk from './pages/PageSolutionProduk';
-import Forum from './pages/Forum';
-import NotFound from './pages/NotFound';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import PageSolutionProdukDetail from './pages/PageSolutionProdukDetail';
+import PageBerita from './pages/PageBerita';
+import PageBeritaRekomendasiDetail from './pages/PageBeritaRekomendasiDetail';
+import PageBeritaTerkiniDetail from './Pages/PageBeritaTerkiniDetail';
+import PageBeritaDetail from './pages/PageBeritaDetail';
+import AllQuestion from './pages/forum/pages/AllQuestion';
+
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import MainLayout from './Layouts/MainLayout';
+import ErrorPage from './pages/ErrorPages';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import AskQuestion from './pages/forum/pages/AskQuestion';
+import MyQuestion from './pages/forum/pages/MyQuestion';
+import PrivateRoute from './components/PrivateRoute';
+import MyProfile from './pages/forum/pages/MyProfile';
+import EditQuestion from './pages/forum/pages/EditQuestion';
+import DetailQuestions from './pages/forum/pages/DetailQuestions';
+
+import VideoTutorial from './pages/VideoTutorial';
+import Dashboard from './pages/admin/dashboard';
+import IsAdmin from './components/IsAdmin';
+import UsersDashboard from './pages/admin/UsersDashboard';
+import AddNewUser from './pages/admin/AddNewUser';
+import EditUser from './pages/admin/EditUser';
+import QuestionDashboard from './pages/admin/QuestionDashboard';
+import AddNewQuestion from './pages/admin/AddNewQuestion';
+import EditQuestionDashboard from './pages/admin/EditQuestionDashboard';
+import InfoPage from './pages/InfoPage';
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      element: <MainLayout />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          path: '/',
+          element: <Home />,
+        },
+        {
+          path: '/solution',
+          element: <PageSolution />,
+        },
+        { 
+          path: '/solution/daurulang',
+          element: <PageSolutionDaurUlang />,
+        },
+        {
+          path: '/solution/daurulang/detail/:id',
+          element: <PageSolutionDaurUlangDetail />,
+        },
+        {
+          path: '/solution/pengomposan',
+          element: <PageSolutionPengomposan />,
+        },
+        {
+          path: '/solution/pengomposan/detail/:id',
+          element: <PageSolutionPengomposanDetail />,
+        },
+        {
+          path: '/solution/produk',
+          element: <PageSolutionProduk />,
+        },
+        {
+          path: '/solution/produk/detail/:id',
+          element: <PageSolutionProdukDetail />,
+        },
+        {
+          path: '/berita',
+          element: <PageBerita />,
+        },
+        {
+          path: '/berita/beritaDetail',
+          element: <PageBeritaDetail />,
+        },
+        {
+          path: '/berita/beritarekomendasidetail/:id',
+          element: <PageBeritaRekomendasiDetail />,
+        },
+        {
+          path: '/berita/beritaterkinidetail/:id',
+          element: <PageBeritaTerkiniDetail />,
+        },
+        {
+          path: '/forum/all-question',
+          element: <AllQuestion />,
+        },
+        {
+          path: '/details-question/:questionId',
+          element: <DetailQuestions />,
+        },
+        {
+          path: '/info-page',
+          element: <InfoPage />,
+        },
+        {
+          element: <PrivateRoute />,
+          children: [
+            {
+              path: '/forum/ask-question',
+              element: <AskQuestion />,
+            },
+            {
+              path: '/forum/my-question',
+              element: <MyQuestion />,
+            },
+            {
+              path: '/my-profile',
+              element: <MyProfile />,
+            },
+            {
+              path: '/edit-question/:questionId',
+              element: <EditQuestion />,
+            },
+          ],
+        },
+        {
+          path: '/video_tutorial',
+          element: <VideoTutorial />,
+        },
+      ],
+    },
+    {
+      element: <IsAdmin />,
+      children: [
+        {
+          path: '/dashboard',
+          element: <Dashboard />,
+        },
+        {
+          path: '/dashboard/users',
+          element: <UsersDashboard />,
+        },
+        {
+          path: '/dashboard/users/add-new-user',
+          element: <AddNewUser />,
+        },
+        {
+          path: '/dashboard/users/edit-user/:userId',
+          element: <EditUser />,
+        },
+        {
+          path: '/dashboard/questions',
+          element: <QuestionDashboard />,
+        },
+        {
+          path: '/dashboard/questions/add-new-question',
+          element: <AddNewQuestion />,
+        },
+        {
+          path: '/dashboard/questions/edit-question/:questionId',
+          element: <EditQuestionDashboard />,
+        },
+      ],
+    },
+    {
+      path: '/login',
+      element: <Login />,
+    },
+    {
+      path: '/register',
+      element: <Register />,
+    },
+  ]);
+
   return (
-    <div>
-      <Navbar />
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path="/solution" element={<PageSolution />} />
-        <Route path="/Solution/daurulang" element={<PageSolutionDaurUlang />} />
-        <Route path="/Solution/pengomposan" element={<PageSolutionPengomposan />} />
-        <Route path="/Solution/pengomposan/detail" element={<PageSolutionPengomposanDetail />} />
-        <Route path="/Solution/produk" element={<PageSolutionProduk />} />
-        <Route path="/forum" element={<Forum />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <Footer />
-    </div>
+    <>
+      <RouterProvider router={router} />
+    </>
   );
 }
 
-export default App;
+export default App

@@ -1,7 +1,20 @@
-import React from 'react'
-import SolutionProdukCss from './SolutionProdukCss.module.css'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import SolutionProdukCss from './SolutionProdukCss.module.css';
+import SolutionProdukCard from './SolutionProdukCard';
 
-export default function SolutionProduk() {
+function SolutionProduk() {
+  const [produkList, setProdukList] = useState([]);
+
+  useEffect(() => {
+    axios.get('https://api-greenwaste.vercel.app/api/solutionsProduk')
+      .then(response => setProdukList(response.data))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
+
+  const yourClickHandlerFunction = (id) => {
+    console.log(`Card clicked with ID: ${id}`);
+  };
   return (
     <>
       <div className={SolutionProdukCss.heroSection} style={{ background: 'url("/img/Solution/plastik-ramah-lingkungan.jpg") center no-repeat', backgroundSize: 'cover' }}>
@@ -58,16 +71,19 @@ export default function SolutionProduk() {
         </div>
       </div>
 
-      <div className={SolutionProdukCss.section2} style={{ backgroundColor: '#F3F3F3' }}>
+      <div className={SolutionProdukCss.section2}>
         <div className={SolutionProdukCss.judulSection2}>
           <h2>
             Pilihan Solusi untuk Anda
           </h2>
         </div>
         <div className={SolutionProdukCss.cardContainer}>
-          {/* isi card belum di tambahkan */}
+          {produkList.map((produk) => (
+            <SolutionProdukCard key={produk._id} produk={{ id: produk._id.toString(),...produk }} onClick={yourClickHandlerFunction} />
+          ))}
         </div>
       </div>
     </>
   )
 }
+export default SolutionProduk;

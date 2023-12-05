@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import SolutionPengomposanCss from './SolutionPengomposanCss.module.css';
+import SolutionPengomposanCard from './SolutionPengomposanCard';
 
 function SolutionPengomposan() {
+  const [komposList, setKomposList] = useState([]);
+
+  useEffect(() => {
+    axios.get('https://api-greenwaste.vercel.app/api/solutionskompos')
+      .then(response => setKomposList(response.data))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
+
+
+  const yourClickHandlerFunction = (id) => {
+    console.log(`Card clicked with ID: ${id}`);
+  };
+
   return (
     <>
       <div className={SolutionPengomposanCss.heroSection} style={{ background: `url('/img/Solution/composting.jpg') center no-repeat`, backgroundSize: 'cover' }}>
@@ -86,7 +101,7 @@ function SolutionPengomposan() {
         </div>
       </div>
 
-
+      
       <div className={SolutionPengomposanCss.section2}>
         <div className={SolutionPengomposanCss.judulSection2}>
           <h2>
@@ -94,7 +109,9 @@ function SolutionPengomposan() {
           </h2>
         </div>
         <div className={SolutionPengomposanCss.cardContainer}>
-            {/* isi card belum di tambahkan */}
+          {komposList.map((kompos) => (
+            <SolutionPengomposanCard key={kompos.id} kompos={{ id: kompos._id.toString(), key: kompos._id.toString(), ...kompos }} onClick={yourClickHandlerFunction} />
+          ))}
         </div>
       </div>
     </>
@@ -102,3 +119,4 @@ function SolutionPengomposan() {
 }
 
 export default SolutionPengomposan;
+

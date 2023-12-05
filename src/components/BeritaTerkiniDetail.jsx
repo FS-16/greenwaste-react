@@ -1,36 +1,36 @@
+// BeritaTerkiniDetail.jsx
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import axios from 'axios';
-import SolutionDetailCss from './SolutionDetailCss.module.css';
+import BeritaDetailCss from './BeritaDetailCss.module.css';
 
-export default function SolutionPengomposanDetail() {
-  const [kompos, setKompos] = useState(null);
+export default function BeritaTerkiniDetail() {
+  const [beritaTerkini, setBeritaTerkini] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
-    const apiUrl = `https://api-greenwaste.vercel.app/api/${id}`;
+    const apiUrl = `https://api-greenwaste.vercel.app/api/berita-terkini/${id}`;
     console.log('API URL:', apiUrl);
-
 
     axios.get(apiUrl)
       .then(response => {
-        setKompos(response.data);
+        setBeritaTerkini(response.data);
       })
       .catch(error => console.error('Error fetching data:', error));
   }, [id]);
 
-  if (!kompos) {
+  if (!beritaTerkini) {
     return <p>Loading...</p>;
   }
 
-  const { article } = kompos;
+  const { content } = beritaTerkini;
 
   return (
-    <div className={SolutionDetailCss.container}>
-      <div className={SolutionDetailCss.arrowBack}>
-        <Link to="/solution/pengomposan">
+    <div className={BeritaDetailCss.container}>
+      <div className={BeritaDetailCss.arrowBack}>
+        <Link to="/berita">
           <img src="https://i.ibb.co/DKVPT3z/arrow-507257.png" alt="arrow-507257" />
         </Link>
       </div>
@@ -38,15 +38,12 @@ export default function SolutionPengomposanDetail() {
       <ReactMarkdown
         rehypePlugins={[rehypeRaw]}
         components={{
-          h1: ({ ...props }) => (
-            <h1 className={SolutionDetailCss.pageTitle} {...props} />
-          ),
           div: ({ className, ...props }) => (
-            <div className={SolutionDetailCss[className]} {...props} />
+            <div className={BeritaDetailCss[className]} {...props} />
           ),
         }}
       >
-        {article}
+        {content}
       </ReactMarkdown>
     </div>
   );

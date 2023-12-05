@@ -31,7 +31,7 @@ export default function Solution() {
 
             <div className={SolutionCss.herosection}>
                 <div className={SolutionCss.heroimage}>
-                <img src="img/Solution/business-idea.png" alt="" />
+                <img src="/img/Solution/business-idea.png" alt="" />
                 </div>
                 <div className={SolutionCss.herodescription}>
                 <h1>Mengapa Pengolahan Limbah Itu Penting?</h1>
@@ -48,17 +48,17 @@ export default function Solution() {
 
                 <div className={SolutionCss.cardcontainer}>
                 <div className={SolutionCss.card}>
-                    <img src="img/Solution/pengomposan-removebg-preview.png" alt="" />
+                    <img src="/img/Solution/pengomposan-removebg-preview.png" alt="" />
                     <h2>Pengomposan</h2>
                     <Link to="/solution/pengomposan">Read More</Link>
                 </div>
                 <div className={SolutionCss.card}>
-                    <img src="img/Solution/ramah lingkungan.jpg" alt="" />
+                    <img src="/img/Solution/ramah lingkungan.jpg" alt="" />
                     <h2>Penggunaan Produk Ramah Lingkungan</h2>
                     <Link to="/solution/produk">Read More</Link>
                 </div>
                 <div className={SolutionCss.card}>
-                    <img src="img/Solution/daur_ulang-removebg-preview.png" alt="" />
+                    <img src="/img/Solution/daur_ulang-removebg-preview.png" alt="" />
                     <h2>Daur Ulang</h2>
                     <Link to="/solution/daurulang">Read More</Link>
                 </div>

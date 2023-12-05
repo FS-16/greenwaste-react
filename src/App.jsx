@@ -25,8 +25,7 @@ import EditQuestion from './pages/forum/pages/EditQuestion';
 import DetailQuestions from './pages/forum/pages/DetailQuestions';
 
 import VideoTutorial from './pages/VideoTutorial';
-import Dashboard from './pages/admin/dashboard';
-import IsAdmin from './components/IsAdmin';
+import Dashboard from './pages/admin/Dashboard';
 import UsersDashboard from './pages/admin/UsersDashboard';
 import AddNewUser from './pages/admin/AddNewUser';
 import EditUser from './pages/admin/EditUser';
